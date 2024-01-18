@@ -1,15 +1,13 @@
 #ifndef UMIDITA_H
 #define UMIDITA_H
-#include <QVector>
-#include <QString>
-#include "Dato.h"
+
 #include "Sensore.h"
 
 class Umidita: public Sensore
 {
 private:
     static bool acceso;
-    QVector<Dato> datiSensore;
+    std::vector<Dato> datiSensore;
 public:
     /*
      * @brief Umidita()    costruttore per la classe Umidita
@@ -28,31 +26,32 @@ public:
      * @param dato      definisce il dato da caricare
      * @return bool      true se modificato con successo, false altrimenti
      */
-    bool modificaDato(QDate data, QTime orario, Dato dato);
+    bool modificaDato( Dato dato);
     /*
      * @brief ricercaDato()    ricerca un dato presente nel vettore
      * @param data      definisce la data del dato da ricercare
      * @param orario    definisce l'orario del dato da ricercare
      * @return Dato     ritorna il dato trovato, altrimenti void
      */
-    Dato ricercaDato(QDate data, QTime orario) const;
+    Dato ricercaDato(Date data, Time orario) const;
     /*
      * @brief eliminaDato()    elimina un dato presente nel vettore
      * @param data      definisce la data del dato da eliminare
      * @param orario    definisce l'orario del dato da eliminare
      * @return bool      true se eliminato con successo, false altrimenti
      */
-    bool eliminaDato(QDate data, QTime orario);
+    bool eliminaDato(Date data, Time orario);
     /*
      * @brief clonaDati()     ritorna una copia del vettore
      */
-    QVector<Dato> clonaDati() const;
+    std::vector<Dato> clonaDati() const;
     /*
      * @param ~Umidita() distruttore per la classe Umidita
      */
     virtual ~Umidita() =default;
 
-    bool changeStato();
+    bool static changeStato();
     bool static getAcceso();
+    bool isEmpty()const;
 };
 #endif // UMIDITA_H

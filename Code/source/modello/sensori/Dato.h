@@ -1,38 +1,39 @@
 #ifndef DATO_H
 #define DATO_H
 
-#include <QDate>
-#include <QTime>
-#include <QString>
+#include "../DateTime/date.h"
+#include "../DateTime/time.h"
+
+
 class Dato
 {
 private:
 
-    const QDate data;
-    const QTime orario;
+    const Date data;
+    const Time orario;
     double misurazione; //precisione a un numero dopo la virgola
-    const QString unitaMisura;
+    const std::string unitaMisura;
 
 public:
-    Dato(QString unitaMis, double misura,QDate data,QTime orario);
-    Dato(QString unitaMis);
+    Dato(std::string unitaMis, double misura,Date data,Time orario);
+    Dato(std::string unitaMis);
     /*
      * @brief Dato    costruttore per la classe Dato
      * @param misurazione      definisce il valore calcolato dal sensore
      * @param data      definisce la data di quando è stato calcolato il dato
      * @param orario      definisce l'orario di quando è stato calcolato il dato
      */
-     Dato(QString unitaMis, double misura);
+     Dato(std::string unitaMis, double misura);
     /*
      * @brief getData       la funzione restituisce la data della misurazione
      * @return QDate        ritorna la data
      */
-     QDate getData() const;
+     Date getData() const;
      /*
      * @brief getOrario       la funzione restituisce la data della misurazione
      * @return QTime        ritorna l'orario
      */
-     QTime getOrario() const;
+     Time getOrario() const;
      /*
      * @brief setMisurazione      la funzione aggiorna la misurazione
      * @param misurazione      definisce il valore calcolato dal sensore
@@ -47,7 +48,7 @@ public:
      /*
      * @brief getUnitaMisura()    ritorna l'unità di misura del dato
      */
-     QString getUnitaMisura()const;
+     std::string getUnitaMisura()const;
      /*
      * @brief toString      la funzione restituisce la stampa di tutti gli attributi della classe
      * @return Qstring        ritorna una stringa
@@ -58,6 +59,7 @@ public:
      */
      virtual ~Dato() =default;
 
+     void operator=(const Dato& other);
 
      bool operator==(const Dato& other) const;
 

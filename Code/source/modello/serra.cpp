@@ -5,74 +5,136 @@ bool Serra::inserisciDato(const Dato dato){
         lumen.inserisciDato(dato);
         return true;
     }
-    if(dato.getUnitaMisura()=="Celsius"){
+    else if(dato.getUnitaMisura()=="Celsius"){
         temper.inserisciDato(dato);
         return true;
     }
-    if(dato.getUnitaMisura()=="g/m^3"){
+    else if(dato.getUnitaMisura()=="g/m^3"){
         umidita.inserisciDato(dato);
+        return true;
+    }
+    else if(dato.getUnitaMisura()=="pH"){
+        PHSuolo.inserisciDato(dato);
+        return true;
+    }
+    else if(dato.getUnitaMisura()=="mmho/cm"){
+        salinita.inserisciDato(dato);
         return true;
     }
 
     return false;
 }
-bool Serra::modificaDato(const QDate data,const QTime orario,const Dato dato){
+bool Serra::modificaDato(const Dato dato){
     if(dato.getUnitaMisura()=="Lumen"){
-        return lumen.modificaDato(data, orario,dato);
+        return lumen.modificaDato(dato);
     }
-    if(dato.getUnitaMisura()=="Celsius"){
+    else if(dato.getUnitaMisura()=="Celsius"){
 
-        return temper.modificaDato(data, orario,dato);
+        return temper.modificaDato(dato);
     }
-    if(dato.getUnitaMisura()=="g/m^3"){
+    else if(dato.getUnitaMisura()=="g/m^3"){
 
-        return umidita.modificaDato(data, orario,dato);;
+        return umidita.modificaDato(dato);
+    }
+    else if(dato.getUnitaMisura()=="pH"){
+
+        return PHSuolo.modificaDato(dato);
+    }
+    else if(dato.getUnitaMisura()=="mmho/cm"){
+
+        return salinita.modificaDato(dato);
     }
 
     return false;
 }
-const Dato Serra::ricercaDato(const QDate data, const QTime orario, const QString unitaMis){
+const Dato Serra::ricercaDato(const Date data, const Time orario, const std::string unitaMis){
     if(unitaMis=="Lumen"){
         return lumen.ricercaDato(data, orario);
     }
-    if(unitaMis=="Celsius"){
+    else if(unitaMis=="Celsius"){
 
         return temper.ricercaDato(data, orario);
     }
-    if(unitaMis=="g/m^3"){
+    else if(unitaMis=="g/m^3"){
 
         return umidita.ricercaDato(data, orario);
     }
-    Dato d("errore");
-    return d;
+    else if(unitaMis==""){
+
+        return PHSuolo.ricercaDato(data, orario);
+    }
+    else if(unitaMis=="mmho/cm"){
+
+        return salinita.ricercaDato(data, orario);
+    }
+    throw std::invalid_argument("Dato non trovato");
 }
-bool Serra::eliminaDato(const QDate data, const QTime orario, const QString unitaMis){
+bool Serra::eliminaDato(const Date data, const Time orario, const std::string unitaMis){
     if(unitaMis=="Lumen"){
         return lumen.eliminaDato(data, orario);
     }
-    if(unitaMis=="Celsius"){
+    else if(unitaMis=="Celsius"){
 
         return temper.eliminaDato(data, orario);
     }
-    if(unitaMis=="g/m^3"){
+    else if(unitaMis=="g/m^3"){
 
          return temper.eliminaDato(data, orario);
+    }
+    else if(unitaMis=="pH"){
+
+        return PHSuolo.eliminaDato(data, orario);
+    }
+    else if(unitaMis=="mmho/cm"){
+
+        return salinita.eliminaDato(data, orario);
     }
 
     return false;
 }
-const QVector<Dato> Serra::clona(const QString unitaMis){
+const std::vector<Dato> Serra::clona(const std::string unitaMis){
     if(unitaMis=="Lumen"){
         return lumen.clonaDati();
     }
-    if(unitaMis=="Celsius"){
+    else if(unitaMis=="Celsius"){
 
         return temper.clonaDati();
     }
-    if(unitaMis=="g/m^3"){
+    else if(unitaMis=="g/m^3"){
 
         return umidita.clonaDati();
     }
-    QVector<Dato> clone;
-   return  clone;
+    else if(unitaMis=="pH"){
+
+        return PHSuolo.clonaDati();
+    }
+    else if(unitaMis=="mmho/cm"){
+
+        return salinita.clonaDati();
+    }
+    throw std::invalid_argument("vettore non trovato");
+
+}
+bool Serra::isEmpty(const std::string unitaMis) const{
+    if(unitaMis=="Lumen"){
+        return lumen.isEmpty();
+    }
+    else if(unitaMis=="Celsius"){
+
+        return temper.isEmpty();
+    }
+    else if(unitaMis=="g/m^3"){
+
+        return umidita.isEmpty();
+    }
+    else if(unitaMis=="pH"){
+
+        return PHSuolo.isEmpty();
+    }
+    else if(unitaMis=="mmho/cm"){
+
+        return salinita.isEmpty();
+    }
+    throw std::invalid_argument("vettore non trovato");
+
 }

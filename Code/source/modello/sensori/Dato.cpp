@@ -1,16 +1,16 @@
 #include "Dato.h"
 
 
-Dato::Dato(QString unitaMis, double misura,QDate data,QTime orario):data(data),orario(orario),misurazione(misura),unitaMisura(unitaMis){}
-Dato::Dato(QString unitaMis, double misura):data(QDate::currentDate()),orario(QTime::currentTime()),misurazione(misura),unitaMisura(unitaMis){}
+Dato::Dato(std::string unitaMis, double misura,Date data,Time orario):data(data),orario(orario),misurazione(misura),unitaMisura(unitaMis){}
+Dato::Dato(std::string unitaMis, double misura):data(QDate::currentDate()),orario(QTime::currentTime()),misurazione(misura),unitaMisura(unitaMis){}
 
-Dato::Dato(QString unitaMis):data(),orario(),misurazione(),unitaMisura(unitaMis){}
-QDate Dato::getData() const
+Dato::Dato(std::string unitaMis):data(),orario(),misurazione(),unitaMisura(unitaMis){}
+Date Dato::getData() const
 {
     return data;
 }
 
-QTime Dato::getOrario() const
+Time Dato::getOrario() const
 {
     return orario;
 }
@@ -23,7 +23,7 @@ bool Dato::setMisurazione(double misura) {
 double Dato::getMisurazione() const {
     return misurazione;
 }
-QString Dato::getUnitaMisura() const{
+std::string Dato::getUnitaMisura() const{
     return unitaMisura;
 }
 Dato Dato::cloneDato() const{
@@ -36,4 +36,7 @@ bool Dato::operator==(const Dato& other) const{
         return true;
     return false;
 }
+void Dato::operator=(const Dato& other){
+    misurazione=other.getMisurazione();
 
+}

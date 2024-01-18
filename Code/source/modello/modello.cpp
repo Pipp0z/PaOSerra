@@ -1,113 +1,245 @@
 #include "modello.h"
 
 modello::modello() {}
-bool modello::saveInfo(const QString &nomeFile, Serra serra){
+bool modello::saveInfo(const std::string &nomeFile){
 
 
     bool check=false;
-    QDomDocument doc;
-    QDomElement root = doc.createElement("root");
-    doc.appendChild(root);
-    int i=0;
-    QDomElement UnitaMis = doc.createElement("Luminosita");
-    UnitaMis.setAttribute("Intensita", Luminosita::getIntensita());
-    root.appendChild(UnitaMis);
-    QVector<Dato>const temp=serra.clona("Lumen");
-    for ( i=0; temp.size(); i++)
-    {
-        QDomElement dato = doc.createElement("Dato");
-        dato.setAttribute("Data",temp.at(i).getData().toString("yyyy-MM-dd"));
-        dato.setAttribute("Time",temp.at(i).getOrario().toString("hh:mm:ss"));
-        dato.setAttribute("Misurazione",QString::number(temp.at(i).getMisurazione()));
-        dato.setAttribute("UnitaMisura",temp.at(i).getUnitaMisura());
-        UnitaMis.appendChild(dato);
+    std::ofstream file(nomeFile);
+    if (!file.is_open()) {
+        std::cerr << "Errore nell'apertura del file per la scrittura: " << nomeFile << std::endl;
+        return false;
+    }
+
+    json jsonDati;
+
+    std::string tipoDato="Luminosita";
+
+    json stato={{"Stato",Luminosita::getIntensita()}};
+    jsonDati[tipoDato].push_back(stato);
+    if(!serra.isEmpty("Lumen")){
+    jsonDati[tipoDato] = json::array();
+    std::vector<Dato> const temp=serra.clona("Lumen");
+    for (const auto& dato : temp) {
+        json jsonDato = {
+            {"data", dato.getData().toString()},
+            {"orario", dato.getOrario().toString()},
+            {"unitaMisura", dato.getUnitaMisura()},
+            {"misura", dato.getMisurazione()}
+        };
+
+        jsonDati[tipoDato].push_back(jsonDato);
+    }
     }
 
 
-         UnitaMis = doc.createElement("Temperatura");
-         UnitaMis.setAttribute("Stato", Temperatura::getStato());
+    tipoDato="Temperatura";
 
-        QVector<Dato>const temp2=serra.clona("Celsius");
-        for (i=0; temp2.size(); i++)
-        {
-            QDomElement dato = doc.createElement("Dato");
-            dato.setAttribute("Data",temp2.at(i).getData().toString("yyyy-MM-dd"));
-            dato.setAttribute("Time",temp2.at(i).getOrario().toString("hh:mm:ss"));
-            dato.setAttribute("Misurazione",QString::number(temp2.at(i).getMisurazione()));
-            dato.setAttribute("UnitaMisura",temp2.at(i).getUnitaMisura());
-            UnitaMis.appendChild(dato);
+    stato={{"Stato",Temperatura::getStato()}};
+    jsonDati[tipoDato].push_back(stato);
+    if(!serra.isEmpty("Celsius")){
+        jsonDati[tipoDato] = json::array();
+        std::vector<Dato> const temp=serra.clona("Celsius");
+        for (const auto& dato : temp) {
+            json jsonDato = {
+                {"data", dato.getData().toString()},
+                {"orario", dato.getOrario().toString()},
+                {"unitaMisura", dato.getUnitaMisura()},
+                {"misura", dato.getMisurazione()}
+            };
 
+            jsonDati[tipoDato].push_back(jsonDato);
         }
+    }
 
 
-        UnitaMis = doc.createElement("Umidita");
-        UnitaMis.setAttribute("Acceso", Umidita::getAcceso());
+    tipoDato="Umidita";
 
-        QVector<Dato>const temp3=serra.clona("g/m^3");
-        for ( i=0; temp3.size(); i++)
-        {
-            QDomElement dato = doc.createElement("Dato");
-            dato.setAttribute("Data",temp3.at(i).getData().toString("yyyy-MM-dd"));
-            dato.setAttribute("Orario",temp3.at(i).getOrario().toString("hh:mm:ss"));
-            dato.setAttribute("Misurazione",QString::number(temp3.at(i).getMisurazione()));
-            dato.setAttribute("UnitaMisura",temp3.at(i).getUnitaMisura());
-            UnitaMis.appendChild(dato);
+    stato={{"Stato",Umidita::getAcceso()}};
+    jsonDati[tipoDato].push_back(stato);
+    if(!serra.isEmpty("g/m^3")){
+        jsonDati[tipoDato] = json::array();
+        std::vector<Dato> const temp=serra.clona("g/m^3");
+        for (const auto& dato : temp) {
+            json jsonDato = {
+                {"data", dato.getData().toString()},
+                {"orario", dato.getOrario().toString()},
+                {"unitaMisura", dato.getUnitaMisura()},
+                {"misura", dato.getMisurazione()}
+            };
 
+            jsonDati[tipoDato].push_back(jsonDato);
         }
+    }
 
-        QFile file( nomeFile );
-        if(file.open(QFile::WriteOnly | QFile::Text)){
-            QTextStream in(&file);
-            in<<doc.toString();
-            file.flush();
-            file.close();
+    tipoDato="PHSuolo";
+
+    stato={{"Stato",PHSuolo::getTipoSuolo()}};
+    jsonDati[tipoDato].push_back(stato);
+    if(!serra.isEmpty("pH")){
+        jsonDati[tipoDato] = json::array();
+        std::vector<Dato> const temp=serra.clona("pH");
+        for (const auto& dato : temp) {
+            json jsonDato = {
+                {"data", dato.getData().toString()},
+                {"orario", dato.getOrario().toString()},
+                {"unitaMisura", dato.getUnitaMisura()},
+                {"misura", dato.getMisurazione()}
+            };
+
+            jsonDati[tipoDato].push_back(jsonDato);
+        }
+    }
+
+    tipoDato="Salinita";
+
+    stato={{"Stato",Salinita::getSalinita()}};
+    jsonDati[tipoDato].push_back(stato);
+    if(!serra.isEmpty("mmho/cm")){
+        jsonDati[tipoDato] = json::array();
+        std::vector<Dato> const temp=serra.clona("mmho/cm");
+        for (const auto& dato : temp) {
+            json jsonDato = {
+                {"data", dato.getData().toString()},
+                {"orario", dato.getOrario().toString()},
+                {"unitaMisura", dato.getUnitaMisura()},
+                {"misura", dato.getMisurazione()}
+            };
+
+            jsonDati[tipoDato].push_back(jsonDato);
+        }
+    }
+
+
+
+
         check=true;
-    }
+
     return check;
 }
 
 
-bool modello::loadInfo(const QString& nomeFile, Serra *serra){
+bool modello::loadInfo(const std::string& nomeFile){
 bool check=false;
-    QDomDocument doc;
-    QFile xmlFile(nomeFile);
-    if (!xmlFile.open(QIODevice::ReadOnly ))
-    {
-        // Error while loading file
-    }
-    doc.setContent(&xmlFile);
-    xmlFile.close();
-
-    QDomElement root = doc.documentElement();
-    QDomElement unitaMis = root.firstChild().toElement();
-    QDomElement node = unitaMis.firstChild().toElement();
-    int intensita = unitaMis.attribute("Intensita").toInt();
-
-    while(intensita!=Luminosita::getIntensita()){
-        if(intensita>Luminosita::getIntensita())
-            Luminosita::aumentaIntensita();
-        else
-            Luminosita::diminuisciIntensita();
+    std::ifstream file(nomeFile);
+    if (!file.is_open()) {
+        std::cerr << "Errore nell'apertura del file per la lettura: " << nomeFile << std::endl;
+        return false;
     }
 
-    while(node.isNull() == false)
-    {
+    json jsonDati;
+    file >> jsonDati;
+    std::string tipoDato="Luminosita";
+    bool er=false;
 
-        if(node.tagName() == "Dato"){
-            while(!node.isNull()){
-                QDate data = QDate::fromString(node.attribute("Data", "Data"));
-                QTime orario = QTime::fromString(node.attribute("Orario", "Orario"));
-                QString unitaMis = node.attribute("UnitaMisura","UnitaMisura");
-                int misura = node.attribute("Misurazione","Misurazione").toInt();
-                Dato d(unitaMis,misura,data,orario);
-                serra->inserisciDato(d);
-                check=true;
-                node = node.nextSibling().toElement();
+    for (const auto& jsonDato : jsonDati[tipoDato]) {
+        if(er){
+            Dato dato = {
+                jsonDato["unitaMisura"].get<std::string>(),
+                jsonDato["misura"].get<double>(),
+                Date::convertFromString(jsonDato["data"]),
+                Time::convertFromString(jsonDato["orario"])
+            };
+            serra.inserisciDato(dato);
+        }else{
+            while(Luminosita::getIntensita()!=jsonDato["Stato"].get<int>()){
+                if(Luminosita::getIntensita()>jsonDato["Stato"].get<int>()){
+                    Luminosita::diminuisciIntensita();
+                }else{
+                    Luminosita::aumentaIntensita();
+                }
             }
-        }
-        node = node.nextSibling().toElement();
-    }
-    node.nextSiblingElement("Temperatura");
+            er=true;
 
+        }
+    }
+    tipoDato="Temperatura";
+     er=false;
+
+    for (const auto& jsonDato : jsonDati[tipoDato]) {
+        if(er){
+            Dato dato = {
+                jsonDato["unitaMisura"].get<std::string>(),
+                jsonDato["misura"].get<double>(),
+                Date::convertFromString(jsonDato["data"]),
+                Time::convertFromString(jsonDato["orario"])
+            };
+            serra.inserisciDato(dato);
+        }else{
+            if(Temperatura::getStato()!=jsonDato["Stato"].get<bool>()){
+                Temperatura::changeStato();
+            }
+            er=true;
+
+        }
+    }
+
+    tipoDato="Umidita";
+    er=false;
+
+    for (const auto& jsonDato : jsonDati[tipoDato]) {
+        if(er){
+            Dato dato = {
+                jsonDato["unitaMisura"].get<std::string>(),
+                jsonDato["misura"].get<double>(),
+                Date::convertFromString(jsonDato["data"]),
+                Time::convertFromString(jsonDato["orario"])
+            };
+            serra.inserisciDato(dato);
+        }else{
+            if(Umidita::getAcceso()!=jsonDato["Stato"].get<bool>()){
+                Umidita::changeStato();
+            }
+            er=true;
+
+        }
+    }
+
+    tipoDato="PHSuolo";
+    er=false;
+
+    for (const auto& jsonDato : jsonDati[tipoDato]) {
+        if(er){
+            Dato dato = {
+                jsonDato["unitaMisura"].get<std::string>(),
+                jsonDato["misura"].get<double>(),
+                Date::convertFromString(jsonDato["data"]),
+                Time::convertFromString(jsonDato["orario"])
+            };
+            serra.inserisciDato(dato);
+        }else{
+            if(PHSuolo::getTipoSuolo()!=jsonDato["Stato"]){
+                PHSuolo::changeStato(jsonDato["Stato"].get<std::string>());
+            }
+            er=true;
+
+        }
+    }
+
+    tipoDato="Salinita";
+    er=false;
+
+    for (const auto& jsonDato : jsonDati[tipoDato]) {
+        if(er){
+            Dato dato = {
+                jsonDato["unitaMisura"].get<std::string>(),
+                jsonDato["misura"].get<double>(),
+                Date::convertFromString(jsonDato["data"]),
+                Time::convertFromString(jsonDato["orario"])
+            };
+            serra.inserisciDato(dato);
+        }else{
+            while(Salinita::getSalinita()!=jsonDato["Stato"].get<int>()){
+                if(Salinita::getSalinita()>jsonDato["Stato"].get<int>()){
+                    Salinita::diminuisciSalinita();
+                }else{
+                    Salinita::aumentaSalinita();
+                }
+            }
+            er=true;
+
+        }
+    }
+    check=true;
     return check;
 }
