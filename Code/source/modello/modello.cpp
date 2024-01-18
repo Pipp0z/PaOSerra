@@ -1,4 +1,8 @@
 #include "modello.h"
+#include <ctime>
+#include <iostream>
+#include <fstream>
+#include <random>
 
 modello::modello() {}
 bool modello::saveInfo(const std::string &nomeFile){
@@ -242,4 +246,18 @@ bool check=false;
     }
     check=true;
     return check;
+}
+
+bool randomDati(){
+    const std::vector<std::string> unitaMisure = {"Lumen", "Celsius", "g/m^3", "pH", "mmho/cm"};
+    std::uniform_real_distribution<> misuraDist(0.0, 100.0);
+     std::uniform_int_distribution<> unitaDist(0, unitaMisure.size() - 1);
+    time_t now = time(0);
+    tm* localTime = localtime(&now);
+
+    std::uniform_int_distribution<> giornoDist(1, 30);
+    std::uniform_int_distribution<> meseDist(1, 12);
+    std::uniform_int_distribution<> orarioOreDist(0, 23);
+    std::uniform_int_distribution<> orarioMinutiDist(0, 59);
+    std::uniform_int_distribution<> orarioSecondiDist(0, 59);
 }

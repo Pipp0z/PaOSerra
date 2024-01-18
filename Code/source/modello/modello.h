@@ -2,8 +2,6 @@
 #define MODELLO_H
 
 #include "serra.h"
-#include <iostream>
-#include <fstream>
 #include "json.hpp"
 
 using json = nlohmann::json;
@@ -48,7 +46,7 @@ public:
     /*
      * @brief cloneDati()    ritorna una copia del vettore
      */
-
+    bool randomDati(std::string unitaMis);
 };
 
 #endif // MODELLO_H
