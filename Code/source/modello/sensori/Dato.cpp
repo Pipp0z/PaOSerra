@@ -2,9 +2,9 @@
 
 
 Dato::Dato(std::string unitaMis, double misura,Date data,Time orario):data(data),orario(orario),misurazione(misura),unitaMisura(unitaMis){}
-Dato::Dato(std::string unitaMis, double misura):data(QDate::currentDate()),orario(QTime::currentTime()),misurazione(misura),unitaMisura(unitaMis){}
 
-Dato::Dato(std::string unitaMis):data(),orario(),misurazione(),unitaMisura(unitaMis){}
+Dato::Dato(Dato const &other):data(other.getData()),orario(other.getOrario()),misurazione(other.getMisurazione()),unitaMisura(other.getUnitaMisura()){}
+
 Date Dato::getData() const
 {
     return data;
@@ -27,7 +27,7 @@ std::string Dato::getUnitaMisura() const{
     return unitaMisura;
 }
 Dato Dato::cloneDato() const{
-    Dato d(getUnitaMisura(),getMisurazione(),getData(),getOrario());
+    Dato d(unitaMisura,misurazione,data,orario);
     return d;
 }
 
@@ -39,4 +39,8 @@ bool Dato::operator==(const Dato& other) const{
 void Dato::operator=(const Dato& other){
     misurazione=other.getMisurazione();
 
+}
+std::string Dato::toString() const{
+    return "Dato: Data ["+ this->getData().toString()+"] Orario ["+ this->getOrario().toString()
+           +"] Misura [" + std::to_string(this->getMisurazione())+"] Unita Misura ["+ this->getUnitaMisura()+"]\n";
 }
