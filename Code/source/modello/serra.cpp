@@ -4,6 +4,7 @@
 Serra::Serra(){
 
 }
+
 bool Serra::inserisciSensori(Sensore* s){
     std::type_index newSensorType(typeid(*s));
     for (const Sensore* sensor : sensori) {
@@ -110,7 +111,7 @@ bool Serra::eliminaDato(const Date data, const Time orario, const std::string un
 }
 const std::vector<Dato> Serra::clona(const std::string unitaMis){
     std::type_index tipoSensore= trovaTipo(unitaMis);
-
+    std::vector<Dato> temp;
     for ( Sensore* sensore : sensori) {
         std::type_index sensorType(typeid(*sensore));
         if (sensorType == tipoSensore) {

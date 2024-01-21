@@ -29,5 +29,9 @@ public:
      * @brief toString() visualizza il vettore di Dati e la descrizione
      */
     std::string toString() const override;
+    /*
+     * @brief viewDato visualizza un solo Dato di tipo Temperatura con la misurazione e unita di misura selezionata
+     */
+    std::string static viewDato(Dato d);
 };
 #endif // TEMPERATURA_H
