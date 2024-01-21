@@ -1,7 +1,12 @@
 #include "Dato.h"
 
 
-Dato::Dato(std::string unitaMis, double misura,Date data,Time orario):data(data),orario(orario),misurazione(misura),unitaMisura(unitaMis){}
+Dato::Dato(std::string unitaMis, double misura,Date data,Time orario):data(data),orario(orario),unitaMisura(unitaMis){
+    if(misura<0)
+        misura=-misura;
+
+    misurazione=misura;
+}
 
 Dato::Dato(Dato const &other):data(other.getData()),orario(other.getOrario()),misurazione(other.getMisurazione()),unitaMisura(other.getUnitaMisura()){}
 
@@ -15,6 +20,9 @@ Time Dato::getOrario() const
     return orario;
 }
 bool Dato::setMisurazione(double misura) {
+    if(misura<0)
+        misura=-misura;
+
     misurazione=misura;
         return true;
 

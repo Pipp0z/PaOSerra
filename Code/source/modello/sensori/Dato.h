@@ -11,7 +11,7 @@ private:
 
     const Date data;
     const Time orario;
-    double misurazione;
+    double misurazione; //valori solo positivi
     const std::string unitaMisura;
 
 public:
