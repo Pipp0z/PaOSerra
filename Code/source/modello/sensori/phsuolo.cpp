@@ -44,3 +44,14 @@ std::string PHSuolo::toString() const{
     s+="] \n";
     return s;
 }
+int PHSuolo::Qualita(Dato d)const {
+    double misura=d.getMisurazione();
+    if(misura>10)//per fare rientrare i range nel caso si usi dati randomici o errori del sensore
+        misura=misura/10;
+    if(misura>7.5){
+        return 2;
+    }else if(misura<6.0)
+        return 0;
+
+    return 1;
+}

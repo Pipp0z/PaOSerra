@@ -331,3 +331,7 @@ bool Modello::setDescrizioneSensore(std::string unitaMis, std::string desc){
 std::string Modello::getDescrizioneSensore(std::string unitaMis){
     return serra.getDescrizioneSensore(unitaMis);
 }
+
+int Modello::Qualita(std::string unitaMis)const{
+    return serra.Qualita(unitaMis);
+}

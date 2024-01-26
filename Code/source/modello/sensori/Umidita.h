@@ -29,5 +29,9 @@ public:
      * @brief toString() visualizza il vettore di Dati e la descrizione
      */
     std::string toString() const override;
+    /*
+     * @brief Qualita() metodo che calcola se l'ultimo valore registrato del sensore è buono(1), se è alto(2) e se è basso(0)
+     */
+    int Qualita(Dato d)const override;
 };
 #endif // UMIDITA_H

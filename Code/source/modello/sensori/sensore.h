@@ -65,6 +65,14 @@ public:
      * @brief toString() metodo virtuale implementato nelle classi figlie
      */
      virtual std::string toString()const =0;
+     /*
+     * @brief Qualita() metodo virtuale implementato nelle classi figlie
+     */
+     virtual int Qualita(Dato d)const =0;
+     /*
+     * @brief ultimoDato() ritorna l'ultimo Dato inserito, altrimenti lancia una eccezione
+     */
+     Dato ultimoDato() const;
 };
 
 #endif // SENSORE_H

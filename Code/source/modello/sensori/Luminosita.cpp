@@ -26,3 +26,11 @@ Luminosita::Luminosita(){}
       s+="] \n";
       return s;
   }
+  int Luminosita::Qualita(Dato d)const {
+      if(d.getMisurazione()>85){
+          return 2;
+      }else if(d.getMisurazione()<65)
+          return 0;
+
+      return 1;
+  }

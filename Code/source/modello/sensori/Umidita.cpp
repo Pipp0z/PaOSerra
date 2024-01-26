@@ -21,3 +21,13 @@ std::string Umidita::toString() const{
     s+="] \n";
     return s;
 }
+int Umidita::Qualita(Dato d)const {
+    double misura=d.getMisurazione();
+
+    if(misura>15){
+        return 2;
+    }else if(misura<10)
+        return 0;
+
+    return 1;
+}

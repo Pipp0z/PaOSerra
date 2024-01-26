@@ -76,7 +76,7 @@ public:
     /*
      * @brief ~Serra() distruttore della classe
      */
-    virtual ~Serra() =default;
+    ~Serra();
     /*
      * @brief toString() ritorna una stringa con tutti i dati e sensori della serra
      */
@@ -92,6 +92,10 @@ public:
      * @param unitaMis per sapere quale sensore scegliere
      */
     std::string getDescrizioneSensore(std::string unitaMis);
+    /*
+     * @brief Qualita() metodo che ritorna se l'ultimo valore registrato del sensore è buono(1), se è alto(2) e se è basso(0)
+     */
+    int Qualita(std::string unitaMis)const;
 };
 
 #endif // SERRA_H

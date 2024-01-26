@@ -77,6 +77,10 @@ public:
      * @param unitaMis  definisce l'unita di misura del sensore
      */
     std::string getDescrizioneSensore(std::string unitaMis);
+    /*
+     * @brief Qualita() metodo che ritorna se l'ultimo valore registrato del sensore è buono(1), se è alto(2) e se è basso(0)
+     */
+    int Qualita(std::string unitaMis)const;
 };
 
 #endif // MODELLO_H

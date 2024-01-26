@@ -48,3 +48,13 @@ std::string Temperatura::toString() const{
     s+="] \n";
     return s;
 }
+int Temperatura::Qualita(Dato d)const {
+    double misura=d.getMisurazione();
+
+    if(misura>27){
+        return 2;
+    }else if(misura<10)
+        return 0;
+
+    return 1;
+}

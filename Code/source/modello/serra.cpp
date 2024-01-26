@@ -169,3 +169,21 @@ std::string Serra::getDescrizioneSensore(std::string unitaMis){
 
     throw std::invalid_argument("Errore nella funzione");
 }
+Serra::~Serra(){
+    for (Sensore* sensore : sensori)
+    {
+        delete sensore;
+    }
+}
+int Serra::Qualita(std::string unitaMis) const{
+    std::type_index tipoSensore= trovaTipo(unitaMis);
+
+    for ( Sensore* sensore : sensori) {
+        std::type_index sensorType(typeid(*sensore));
+        if (sensorType == tipoSensore) {
+            return sensore->Qualita(sensore->ultimoDato());
+        }
+    }
+
+    throw std::invalid_argument("Errore nella funzione");
+}

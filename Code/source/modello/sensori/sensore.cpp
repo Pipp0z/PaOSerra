@@ -64,3 +64,9 @@ bool Sensore::setDescrizione(std::string s){
     descrizione=s;
     return true;
 }
+Dato Sensore::ultimoDato() const{
+    if(!datiSensore.empty()){
+        return datiSensore.back();
+    }
+    throw;
+}
