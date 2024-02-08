@@ -1,4 +1,5 @@
 #include "time.h"
+#include <sstream>
 
 Time::Time() {
     seconds=0;

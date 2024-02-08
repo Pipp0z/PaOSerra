@@ -1,7 +1,7 @@
 #ifndef SERRA_H
 #define SERRA_H
 
-#include "sensori/sensore.h"
+#include "sensori/Sensore.h"
 #include "sensori/Luminosita.h"
 #include "sensori/Umidita.h"
 #include "sensori/Temperatura.h"

@@ -1,4 +1,4 @@
-#include "salinita.h"
+#include "Salinita.h"
 
 unsigned int Salinita::sogliaSalinita=7;
 

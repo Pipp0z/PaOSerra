@@ -1,4 +1,4 @@
-#include "sensore.h"
+#include "Sensore.h"
 
 Sensore::Sensore() {}
 void Sensore::inserisciDato(Dato dato)  {

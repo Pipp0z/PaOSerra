@@ -1,8 +1,8 @@
 #ifndef MODELLO_H
 #define MODELLO_H
 
-#include "serra.h"
-#include "json.hpp"
+#include "Serra.h"
+#include "../../json/single_include/nlohmann/json.hpp"
 #include <fstream>
 #include <random>
 

@@ -1,0 +1,170 @@
+{
+  "Luminosita": [
+    {
+      "Descrizione": "Nera come la tua schiena, vestita di Nero",
+      "Stato": 75
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 88.16371678641099,
+      "orario": "14:44:38",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 34.3864379669385,
+      "orario": "18:44:38",
+      "unitaMisura": "Lumen"
+    }
+  ],
+  "PHSuolo": [
+    {
+      "Descrizione": "",
+      "Stato": "Turba"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 57.20844609166973,
+      "orario": "02:44:38",
+      "unitaMisura": "pH"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 30.56115947331356,
+      "orario": "04:44:38",
+      "unitaMisura": "pH"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 8.491374671623863,
+      "orario": "06:44:38",
+      "unitaMisura": "pH"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 67.63463118890168,
+      "orario": "10:44:38",
+      "unitaMisura": "pH"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 9.615997978483822,
+      "orario": "16:44:38",
+      "unitaMisura": "pH"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 4.314170710165454,
+      "orario": "20:44:38",
+      "unitaMisura": "pH"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 95.13182948193375,
+      "orario": "21:44:38",
+      "unitaMisura": "pH"
+    }
+  ],
+  "Salinita": [
+    {
+      "Descrizione": "",
+      "Stato": 7
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 86.78401204666608,
+      "orario": "01:44:38",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 80.96277647184947,
+      "orario": "03:44:38",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 10.733858012336038,
+      "orario": "07:44:38",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 7.011043209321064,
+      "orario": "11:44:38",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 79.64634352660293,
+      "orario": "13:44:38",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 8.384275080207107,
+      "orario": "19:44:38",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 32.65358829300678,
+      "orario": "22:44:38",
+      "unitaMisura": "mmho/cm"
+    }
+  ],
+  "Temperatura": [
+    {
+      "Descrizione": "",
+      "Stato": true
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 17.62766537688891,
+      "orario": "00:44:38",
+      "unitaMisura": "Celsius"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 46.93486848494554,
+      "orario": "12:44:38",
+      "unitaMisura": "Celsius"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 42.55802589041958,
+      "orario": "15:44:38",
+      "unitaMisura": "Celsius"
+    }
+  ],
+  "Umidita": [
+    {
+      "Descrizione": "",
+      "Stato": true
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 18.924241529326697,
+      "orario": "05:44:38",
+      "unitaMisura": "g/m^3"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 78.85436321215954,
+      "orario": "08:44:38",
+      "unitaMisura": "g/m^3"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 53.689155482529586,
+      "orario": "09:44:38",
+      "unitaMisura": "g/m^3"
+    },
+    {
+      "data": "18/1/2024",
+      "misura": 52.844486748163774,
+      "orario": "17:44:38",
+      "unitaMisura": "g/m^3"
+    }
+  ]
+}

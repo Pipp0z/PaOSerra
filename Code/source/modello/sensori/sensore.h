@@ -1,6 +1,6 @@
 #ifndef SENSORE_H
 #define SENSORE_H
-#include <Vector>
+#include <vector>
 #include "../DateTime/date.h"
 #include "../DateTime/time.h"
 #include "Dato.h"

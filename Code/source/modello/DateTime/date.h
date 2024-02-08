@@ -1,5 +1,5 @@
-#ifndef DATE_H
-#define DATE_H
+#pragma once
+
 #include <stdexcept>
 #include <sstream>
 #include <string>
@@ -71,6 +71,3 @@ public:
      */
     Date& operator=(const Date& other)const;
 };
-
-
-#endif // DATE_H

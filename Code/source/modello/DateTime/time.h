@@ -1,5 +1,5 @@
-#ifndef TIME_H
-#define TIME_H
+#pragma once
+
 #include <iomanip>
 #include <string>
 #include <stdexcept>
@@ -71,4 +71,3 @@ static int convertFromString(const std::string& timeString);
 Time& operator=(const Time& other) const;
 
 };
-#endif // TIME_H
