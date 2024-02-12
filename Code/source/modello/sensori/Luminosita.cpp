@@ -22,7 +22,7 @@ Luminosita::Luminosita(){}
 
   std::string Luminosita::toString() const{
       std::string s="[Luminosita: \n";
-      s+=toStringSensore();
+      s+=Sensore::toString();
       s+="] \n";
       return s;
   }
@@ -33,4 +33,7 @@ Luminosita::Luminosita(){}
           return 0;
 
       return 1;
+  }
+  std::type_index Luminosita::getType() const{
+      return typeid(Luminosita);
   }

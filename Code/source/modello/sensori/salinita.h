@@ -1,5 +1,4 @@
-#ifndef SALINITA_H
-#define SALINITA_H
+#pragma once
 
 #include "Sensore.h"
 
@@ -36,6 +35,10 @@ public:
      * @brief Qualita() metodo che calcola se l'ultimo valore registrato del sensore è buono(1), se è alto(2) e se è basso(0)
      */
     int Qualita(Dato d)const override;
+    /*
+     * @brief getType() ritorna il tipo della classe
+     */
+    std::type_index getType() const override;
 };
 
-#endif // SALINITA_H
+

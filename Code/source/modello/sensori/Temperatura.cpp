@@ -36,7 +36,7 @@ bool Temperatura::getStato(){
 std::string Temperatura::toString() const{
     std::string s="[Temperatura: \n";
     if(!Temperatura::getStato()){
-           s+=toStringSensore();
+           s+=Sensore::toString();
     }else{
         std::vector<Dato> temp = clonaDati();
         for (size_t i = 0; i < temp.size(); ++i) {
@@ -57,4 +57,7 @@ int Temperatura::Qualita(Dato d)const {
         return 0;
 
     return 1;
+}
+std::type_index Temperatura::getType() const{
+    return typeid(Temperatura);
 }

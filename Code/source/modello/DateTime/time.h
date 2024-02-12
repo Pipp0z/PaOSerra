@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <string>
 #include <stdexcept>
+#include <sstream>
 
 
 class Time

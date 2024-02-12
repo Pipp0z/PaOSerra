@@ -133,8 +133,7 @@ bool Serra::isEmpty(const std::string unitaMis) const{
             return sensore->isEmpty();
         }
     }
-
-    throw std::invalid_argument("Errore nella funzione");
+    return true;
 
 }
 std::string Serra::toString() const{
@@ -155,7 +154,7 @@ bool Serra::setDescrizioneSensore(std::string unitaMis, std::string desc){
         }
     }
 
-    throw std::invalid_argument("Errore nella funzione");
+    throw std::invalid_argument("Errore nella funzione setDescrizione");
 }
 std::string Serra::getDescrizioneSensore(std::string unitaMis){
     std::type_index tipoSensore= trovaTipo(unitaMis);
@@ -166,8 +165,7 @@ std::string Serra::getDescrizioneSensore(std::string unitaMis){
             return sensore->getDescrizione();
         }
     }
-
-    throw std::invalid_argument("Errore nella funzione");
+    return "";
 }
 Serra::~Serra(){
     for (Sensore* sensore : sensori)

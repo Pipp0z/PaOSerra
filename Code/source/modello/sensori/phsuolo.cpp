@@ -40,7 +40,7 @@ std::string PHSuolo::getTipoSuolo(){
 
 std::string PHSuolo::toString() const{
     std::string s="[PHSuolo: \n";
-    s+=toStringSensore();
+    s+=Sensore::toString();
     s+="] \n";
     return s;
 }
@@ -54,4 +54,7 @@ int PHSuolo::Qualita(Dato d)const {
         return 0;
 
     return 1;
+}
+std::type_index PHSuolo::getType() const{
+    return typeid(PHSuolo);
 }

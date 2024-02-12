@@ -22,7 +22,7 @@ int  Salinita::getSalinita(){
 
 std::string Salinita::toString() const{
     std::string s="[Salinita: \n";
-    s+=toStringSensore();
+    s+=Sensore::toString();
     s+="] \n";
     return s;
 }
@@ -36,4 +36,7 @@ int Salinita::Qualita(Dato d)const {
         return 0;
 
     return 1;
+}
+std::type_index Salinita::getType() const{
+    return typeid(Salinita);
 }

@@ -48,7 +48,7 @@ std::vector<Dato> Sensore::clonaDati() const{
 bool Sensore::isEmpty()const{
     return datiSensore.empty();
 }
-std::string Sensore::toStringSensore() const{
+std::string Sensore::toString() const{
     std::string s;
     s+="Descrizione: "+getDescrizione()+"\n";
     for(size_t i=0;i<datiSensore.size();++i){
@@ -69,4 +69,7 @@ Dato Sensore::ultimoDato() const{
         return datiSensore.back();
     }
     throw;
+}
+std::type_index Sensore::getType() const{
+    return typeid(Sensore);
 }

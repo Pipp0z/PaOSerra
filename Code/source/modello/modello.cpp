@@ -5,6 +5,19 @@
 Modello::Modello(){
     Serra();
 }
+bool Modello::inserisciSensori(Sensore* s){
+    return serra.inserisciSensori(s);
+
+
+}
+
+void Modello::rimuoviSensore(const std::string s) {
+    serra.rimuoviSensore(s);
+}
+
+Sensore* Modello::cercaSensore( std::string s) {
+    return serra.cercaSensore(s);
+}
 bool Modello::saveInfo(const std::string &nomeFile){
 
 
@@ -277,6 +290,16 @@ bool check=false;
 
         }
     }
+    if(serra.isEmpty("Lumen"))
+        serra.rimuoviSensore("Lumen");
+    if(serra.isEmpty("g/m^3"))
+        serra.rimuoviSensore("g/m^3");
+    if(serra.isEmpty("pH"))
+        serra.rimuoviSensore("pH");
+    if(serra.isEmpty("Celsius"))
+        serra.rimuoviSensore("Celsius");
+    if(serra.isEmpty("mmho/cm"))
+        serra.rimuoviSensore("mmho/cm");
     check=true;
     return check;
 }

@@ -1,4 +1,4 @@
-# Prerequisites
+[10:09, 12/2/2024] Happy Pipp0z: # Prerequisites
 *.d
 
 # Compiled Object files
@@ -30,3 +30,37 @@
 *.exe
 *.out
 *.app
+[10:10, 12/2/2024] Happy Pipp0z: # Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+*.vscode

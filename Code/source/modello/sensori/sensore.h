@@ -1,5 +1,5 @@
-#ifndef SENSORE_H
-#define SENSORE_H
+#pragma once
+#include <typeindex>
 #include <vector>
 #include "../DateTime/date.h"
 #include "../DateTime/time.h"
@@ -60,11 +60,7 @@ public:
      /*
      * @brief toStringSensore() visualizza il vettore di Dati e la descrizione
      */
-     std::string toStringSensore()const;
-     /*
-     * @brief toString() metodo virtuale implementato nelle classi figlie
-     */
-     virtual std::string toString()const =0;
+     virtual std::string toString()const ;
      /*
      * @brief Qualita() metodo virtuale implementato nelle classi figlie
      */
@@ -73,6 +69,10 @@ public:
      * @brief ultimoDato() ritorna l'ultimo Dato inserito, altrimenti lancia una eccezione
      */
      Dato ultimoDato() const;
+     /*
+     * @brief getType() ritorna il tipo della classe
+     */
+    virtual std::type_index getType() const;
 };
 
-#endif // SENSORE_H
+

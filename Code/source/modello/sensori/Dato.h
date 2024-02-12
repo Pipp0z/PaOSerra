@@ -1,5 +1,4 @@
-#ifndef DATO_H
-#define DATO_H
+#pragma once
 
 #include "../DateTime/date.h"
 #include "../DateTime/time.h"
@@ -79,4 +78,4 @@ public:
 
 
 };
-#endif // DATO_H
+

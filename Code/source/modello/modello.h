@@ -1,5 +1,4 @@
-#ifndef MODELLO_H
-#define MODELLO_H
+#pragma once
 
 #include "Serra.h"
 #include "../../json/single_include/nlohmann/json.hpp"
@@ -81,6 +80,23 @@ public:
      * @brief Qualita() metodo che ritorna se l'ultimo valore registrato del sensore è buono(1), se è alto(2) e se è basso(0)
      */
     int Qualita(std::string unitaMis)const;
+    /*
+     * @brief rimuoviSensore() inserisce un oggetto di tipo Sensore
+     * @param Sensore *s definisce un puntatore di un Sensore
+     */
+    bool inserisciSensori(Sensore *s);
+    /*
+     * @brief rimuoviSensore() elimina l'oggetto Sensore specificato
+     * @param std::string s definisce l'unita di misura del sensore
+     */
+    void rimuoviSensore(const std::string s);
+    /*
+     * @brief cercaSensore() ritorna il puntatore ad un oggetto di tipo Sensore
+     * @param std::string s definisce l'unita di misura del sensore
+     */
+    Sensore* cercaSensore( std::string s);
+    /*
+     * @brief inserisciDato() inserisce un dato nel vettore con la stessa unita di misura
+     * @param dato dato da aggiungere
+     */
 };
-
-#endif // MODELLO_H

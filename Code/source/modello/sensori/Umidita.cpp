@@ -17,7 +17,7 @@ bool  Umidita::getAcceso(){
 
 std::string Umidita::toString() const{
     std::string s="[Umidita: \n";
-    s+=toStringSensore();
+    s+=Sensore::toString();
     s+="] \n";
     return s;
 }
@@ -30,4 +30,7 @@ int Umidita::Qualita(Dato d)const {
         return 0;
 
     return 1;
+}
+std::type_index Umidita::getType() const{
+    return typeid(Umidita);
 }

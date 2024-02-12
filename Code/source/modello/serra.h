@@ -1,5 +1,4 @@
-#ifndef SERRA_H
-#define SERRA_H
+#pragma once
 
 #include "sensori/Sensore.h"
 #include "sensori/Luminosita.h"
@@ -98,4 +97,3 @@ public:
     int Qualita(std::string unitaMis)const;
 };
 
-#endif // SERRA_H
