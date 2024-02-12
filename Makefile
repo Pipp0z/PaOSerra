@@ -54,28 +54,28 @@ OBJECTS_DIR   = ./
 
 SOURCES       = Code/source/main.cpp \
 		Code/source/mainwindow.cpp \
-		Code/source/modello/modello.cpp \
-		Code/source/modello/serra.cpp \
-		Code/source/modello/DateTime/date.cpp \
-		Code/source/modello/DateTime/time.cpp \
+		Code/source/modello/Modello.cpp \
+		Code/source/modello/Serra.cpp \
+		Code/source/modello/DateTime/Date.cpp \
+		Code/source/modello/DateTime/Time.cpp \
 		Code/source/modello/sensori/Dato.cpp \
 		Code/source/modello/sensori/Luminosita.cpp \
-		Code/source/modello/sensori/phsuolo.cpp \
-		Code/source/modello/sensori/salinita.cpp \
-		Code/source/modello/sensori/sensore.cpp \
+		Code/source/modello/sensori/PHSuolo.cpp \
+		Code/source/modello/sensori/Salinita.cpp \
+		Code/source/modello/sensori/Sensore.cpp \
 		Code/source/modello/sensori/Temperatura.cpp \
 		Code/source/modello/sensori/Umidita.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		modello.o \
-		serra.o \
-		date.o \
-		time.o \
+		Modello.o \
+		Serra.o \
+		Date.o \
+		Time.o \
 		Dato.o \
 		Luminosita.o \
-		phsuolo.o \
-		salinita.o \
-		sensore.o \
+		PHSuolo.o \
+		Salinita.o \
+		Sensore.o \
 		Temperatura.o \
 		Umidita.o \
 		moc_mainwindow.o
@@ -392,27 +392,27 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/yacc.prf \
 		/opt/homebrew/share/qt/mkspecs/features/lex.prf \
 		PaOSerra.pro Code/source/mainwindow.h \
-		Code/source/modello/modello.h \
-		Code/source/modello/serra.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h \
 		Code/source/modello/sensori/Luminosita.h \
-		Code/source/modello/sensori/phsuolo.h \
-		Code/source/modello/sensori/salinita.h \
-		Code/source/modello/sensori/sensore.h \
+		Code/source/modello/sensori/PHSuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/source/modello/sensori/Sensore.h \
 		Code/source/modello/sensori/Temperatura.h \
 		Code/source/modello/sensori/Umidita.h Code/source/main.cpp \
 		Code/source/mainwindow.cpp \
-		Code/source/modello/modello.cpp \
-		Code/source/modello/serra.cpp \
-		Code/source/modello/DateTime/date.cpp \
-		Code/source/modello/DateTime/time.cpp \
+		Code/source/modello/Modello.cpp \
+		Code/source/modello/Serra.cpp \
+		Code/source/modello/DateTime/Date.cpp \
+		Code/source/modello/DateTime/Time.cpp \
 		Code/source/modello/sensori/Dato.cpp \
 		Code/source/modello/sensori/Luminosita.cpp \
-		Code/source/modello/sensori/phsuolo.cpp \
-		Code/source/modello/sensori/salinita.cpp \
-		Code/source/modello/sensori/sensore.cpp \
+		Code/source/modello/sensori/PHSuolo.cpp \
+		Code/source/modello/sensori/Salinita.cpp \
+		Code/source/modello/sensori/Sensore.cpp \
 		Code/source/modello/sensori/Temperatura.cpp \
 		Code/source/modello/sensori/Umidita.cpp
 QMAKE_TARGET  = PaOSerra
@@ -1097,8 +1097,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Code/source/mainwindow.h Code/source/modello/modello.h Code/source/modello/serra.h Code/source/modello/DateTime/date.h Code/source/modello/DateTime/time.h Code/source/modello/sensori/Dato.h Code/source/modello/sensori/Luminosita.h Code/source/modello/sensori/phsuolo.h Code/source/modello/sensori/salinita.h Code/source/modello/sensori/sensore.h Code/source/modello/sensori/Temperatura.h Code/source/modello/sensori/Umidita.h $(DISTDIR)/
-	$(COPY_FILE) --parents Code/source/main.cpp Code/source/mainwindow.cpp Code/source/modello/modello.cpp Code/source/modello/serra.cpp Code/source/modello/DateTime/date.cpp Code/source/modello/DateTime/time.cpp Code/source/modello/sensori/Dato.cpp Code/source/modello/sensori/Luminosita.cpp Code/source/modello/sensori/phsuolo.cpp Code/source/modello/sensori/salinita.cpp Code/source/modello/sensori/sensore.cpp Code/source/modello/sensori/Temperatura.cpp Code/source/modello/sensori/Umidita.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Code/source/mainwindow.h Code/source/modello/Modello.h Code/source/modello/Serra.h Code/source/modello/DateTime/Date.h Code/source/modello/DateTime/Time.h Code/source/modello/sensori/Dato.h Code/source/modello/sensori/Luminosita.h Code/source/modello/sensori/PHSuolo.h Code/source/modello/sensori/Salinita.h Code/source/modello/sensori/Sensore.h Code/source/modello/sensori/Temperatura.h Code/source/modello/sensori/Umidita.h $(DISTDIR)/
+	$(COPY_FILE) --parents Code/source/main.cpp Code/source/mainwindow.cpp Code/source/modello/Modello.cpp Code/source/modello/Serra.cpp Code/source/modello/DateTime/Date.cpp Code/source/modello/DateTime/Time.cpp Code/source/modello/sensori/Dato.cpp Code/source/modello/sensori/Luminosita.cpp Code/source/modello/sensori/PHSuolo.cpp Code/source/modello/sensori/Salinita.cpp Code/source/modello/sensori/Sensore.cpp Code/source/modello/sensori/Temperatura.cpp Code/source/modello/sensori/Umidita.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1164,8 +1164,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 main.o: Code/source/main.cpp Code/source/modello/Modello.h \
 		Code/source/modello/Serra.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h \
 		Code/source/modello/sensori/Luminosita.h \
 		Code/source/modello/sensori/Umidita.h \
@@ -1180,11 +1180,11 @@ mainwindow.o: Code/source/mainwindow.cpp Code/source/mainwindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o Code/source/mainwindow.cpp
 
-modello.o: Code/source/modello/modello.cpp Code/source/modello/Modello.h \
+Modello.o: Code/source/modello/Modello.cpp Code/source/modello/Modello.h \
 		Code/source/modello/Serra.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h \
 		Code/source/modello/sensori/Luminosita.h \
 		Code/source/modello/sensori/Umidita.h \
@@ -1192,69 +1192,69 @@ modello.o: Code/source/modello/modello.cpp Code/source/modello/Modello.h \
 		Code/source/modello/sensori/PHSuolo.h \
 		Code/source/modello/sensori/Salinita.h \
 		Code/json/single_include/nlohmann/json.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modello.o Code/source/modello/modello.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Modello.o Code/source/modello/Modello.cpp
 
-serra.o: Code/source/modello/serra.cpp Code/source/modello/Serra.h \
+Serra.o: Code/source/modello/Serra.cpp Code/source/modello/Serra.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h \
 		Code/source/modello/sensori/Luminosita.h \
 		Code/source/modello/sensori/Umidita.h \
 		Code/source/modello/sensori/Temperatura.h \
 		Code/source/modello/sensori/PHSuolo.h \
 		Code/source/modello/sensori/Salinita.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serra.o Code/source/modello/serra.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Serra.o Code/source/modello/Serra.cpp
 
-date.o: Code/source/modello/DateTime/date.cpp Code/source/modello/DateTime/date.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o date.o Code/source/modello/DateTime/date.cpp
+Date.o: Code/source/modello/DateTime/Date.cpp Code/source/modello/DateTime/Date.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Date.o Code/source/modello/DateTime/Date.cpp
 
-time.o: Code/source/modello/DateTime/time.cpp Code/source/modello/DateTime/time.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o time.o Code/source/modello/DateTime/time.cpp
+Time.o: Code/source/modello/DateTime/Time.cpp Code/source/modello/DateTime/Time.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Time.o Code/source/modello/DateTime/Time.cpp
 
 Dato.o: Code/source/modello/sensori/Dato.cpp Code/source/modello/sensori/Dato.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Dato.o Code/source/modello/sensori/Dato.cpp
 
 Luminosita.o: Code/source/modello/sensori/Luminosita.cpp Code/source/modello/sensori/Luminosita.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Luminosita.o Code/source/modello/sensori/Luminosita.cpp
 
-phsuolo.o: Code/source/modello/sensori/phsuolo.cpp Code/source/modello/sensori/PHSuolo.h \
+PHSuolo.o: Code/source/modello/sensori/PHSuolo.cpp Code/source/modello/sensori/PHSuolo.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o phsuolo.o Code/source/modello/sensori/phsuolo.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PHSuolo.o Code/source/modello/sensori/PHSuolo.cpp
 
-salinita.o: Code/source/modello/sensori/salinita.cpp Code/source/modello/sensori/Salinita.h \
+Salinita.o: Code/source/modello/sensori/Salinita.cpp Code/source/modello/sensori/Salinita.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o salinita.o Code/source/modello/sensori/salinita.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Salinita.o Code/source/modello/sensori/Salinita.cpp
 
-sensore.o: Code/source/modello/sensori/sensore.cpp Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+Sensore.o: Code/source/modello/sensori/Sensore.cpp Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sensore.o Code/source/modello/sensori/sensore.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Sensore.o Code/source/modello/sensori/Sensore.cpp
 
 Temperatura.o: Code/source/modello/sensori/Temperatura.cpp Code/source/modello/sensori/Temperatura.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Temperatura.o Code/source/modello/sensori/Temperatura.cpp
 
 Umidita.o: Code/source/modello/sensori/Umidita.cpp Code/source/modello/sensori/Umidita.h \
 		Code/source/modello/sensori/Sensore.h \
-		Code/source/modello/DateTime/date.h \
-		Code/source/modello/DateTime/time.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Umidita.o Code/source/modello/sensori/Umidita.cpp
 

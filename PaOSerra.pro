@@ -17,29 +17,29 @@ QT += core gui widgets
 # Input
 HEADERS += \
     Code/source/mainwindow.h \
-    Code/source/modello/modello.h \
-    Code/source/modello/serra.h \
-    Code/source/modello/DateTime/date.h \
-    Code/source/modello/DateTime/time.h \
+    Code/source/modello/Modello.h \
+    Code/source/modello/Serra.h \
+    Code/source/modello/DateTime/Date.h \
+    Code/source/modello/DateTime/Time.h \
     Code/source/modello/sensori/Dato.h \
     Code/source/modello/sensori/Luminosita.h \
-    Code/source/modello/sensori/phsuolo.h \
-    Code/source/modello/sensori/salinita.h \
-    Code/source/modello/sensori/sensore.h \
+    Code/source/modello/sensori/PHSuolo.h \
+    Code/source/modello/sensori/Salinita.h \
+    Code/source/modello/sensori/Sensore.h \
     Code/source/modello/sensori/Temperatura.h \
     Code/source/modello/sensori/Umidita.h
 SOURCES += \
     Code/source/main.cpp \
     Code/source/mainwindow.cpp \
-    Code/source/modello/modello.cpp \
-    Code/source/modello/serra.cpp \
-    Code/source/modello/DateTime/date.cpp \
-    Code/source/modello/DateTime/time.cpp \
+    Code/source/modello/Modello.cpp \
+    Code/source/modello/Serra.cpp \
+    Code/source/modello/DateTime/Date.cpp \
+    Code/source/modello/DateTime/Time.cpp \
     Code/source/modello/sensori/Dato.cpp \
     Code/source/modello/sensori/Luminosita.cpp \
-    Code/source/modello/sensori/phsuolo.cpp \
-    Code/source/modello/sensori/salinita.cpp \
-    Code/source/modello/sensori/sensore.cpp \
+    Code/source/modello/sensori/PHSuolo.cpp \
+    Code/source/modello/sensori/Salinita.cpp \
+    Code/source/modello/sensori/Sensore.cpp \
     Code/source/modello/sensori/Temperatura.cpp \
     Code/source/modello/sensori/Umidita.cpp
 

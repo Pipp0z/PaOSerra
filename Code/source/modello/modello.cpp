@@ -1,7 +1,5 @@
 #include "Modello.h"
 
-
-
 Modello::Modello(){
     Serra();
 }

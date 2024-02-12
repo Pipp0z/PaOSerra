@@ -1,8 +1,8 @@
 #pragma once
 #include <typeindex>
 #include <vector>
-#include "../DateTime/date.h"
-#include "../DateTime/time.h"
+#include "../DateTime/Date.h"
+#include "../DateTime/Time.h"
 #include "Dato.h"
 
 class Sensore
