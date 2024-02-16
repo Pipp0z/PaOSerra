@@ -1,12 +1,5 @@
 #include "Visualizzasensori.h"
 
-//MESI DALL'ALTRA PARTE
-
-// #include "../controller/Controller.h"
-// #include <QInputDialog>
-// #include "Graficoview.h"
-// #include "VisualizzaDatiWindow.h"
-
 QString nomeTipo(QString tipo){
     if(tipo=="Lumen"){
         return "Luminosità";
@@ -16,16 +9,13 @@ QString nomeTipo(QString tipo){
         return "Temperatura";
     } else if(tipo=="mmho/cm"){
         return "Salinità";
-    } else if(tipo=="g/m^3"){
-        return "Ph Suolo";
+    } else if(tipo=="pH"){
+        return "PhSuolo";
     }
     return "unknown";
 }
 
-VisualizzaSensori::VisualizzaSensori(const QString &tipoSensore, QWidget *parent)
-    : QWidget(parent), tipo(tipoSensore)
-{
-    // Inizializza layoutDati come un layout verticale
+VisualizzaSensori::VisualizzaSensori(const QString &tipoSensore, QWidget *parent): QWidget(parent), tipo(tipoSensore) {
     layoutDati = new QVBoxLayout();
 
     setWindowTitle("Visualizza Sensore " + nomeTipo(tipo));
@@ -42,7 +32,7 @@ VisualizzaSensori::VisualizzaSensori(const QString &tipoSensore, QWidget *parent
     mainLayout->addWidget(btnGrafico);
     mainLayout->addWidget(btnModificaDescrizione);
     mainLayout->addWidget(btnVisualizza);
-    mainLayout->addLayout(layoutDati); // Aggiungi il layoutDati sotto i pulsanti
+    mainLayout->addLayout(layoutDati);
 
     setLayout(mainLayout);
     connect(btnModificaDescrizione, &QPushButton::clicked, this, &VisualizzaSensori::modificaDescrizione);
@@ -50,22 +40,17 @@ VisualizzaSensori::VisualizzaSensori(const QString &tipoSensore, QWidget *parent
     connect(btnVisualizza, &QPushButton::clicked, this, &VisualizzaSensori::visualizzaDati);
     connect(btnGrafico, &QPushButton::clicked, this, &VisualizzaSensori::grafico);
     visualizzaDescrizione();
+
+    setMinimumSize(300, 200);
 }
-
-
-
-
-
 
 void VisualizzaSensori::setController(Controller *controller) {
     m_controller = controller;
 }
 
 void VisualizzaSensori::inserisciDato() {
-    // Chiedi all'utente di inserire il valore del dato direttamente nella funzione
     double valore = QInputDialog::getDouble(this, "Inserisci Dato", "Inserisci il valore del dato:", 0, 0, 100, 1);
 
-    // Chiedi all'utente di selezionare l'ora
     QTime ora = QTime::currentTime();
 
     QStringList giorni;
@@ -90,10 +75,8 @@ void VisualizzaSensori::inserisciDato() {
     QString anno = QInputDialog::getItem(this, "Inserisci Dato", "Seleziona l'anno:", anni, 0, false, &ok);
     if (!ok) return;
 
-    // Ora hai raccolto tutti i dati dall'utente, puoi inviarli al controller per l'inserimento
     bool successo = m_controller->handleInserisciDato(valore, giorno.toInt(), mese.toInt(), anno.toInt(), ora, tipo);
 
-    // Mostra un messaggio di conferma o di avviso all'utente
     if (successo) {
         QMessageBox::information(this, "Successo", "Dato inserito con successo!");
     } else {
@@ -103,40 +86,23 @@ void VisualizzaSensori::inserisciDato() {
 
 
 void VisualizzaSensori::visualizzaDati() {
-    // Prendi i dati dal controller
     QVector<Dato> dati = m_controller->richiediDati(tipo);
 
-    // Apri la finestra per visualizzare i dati
     VisualizzaDatiWindow* datiWindow = new VisualizzaDatiWindow(dati, m_controller,tipo, this);
-    datiWindow->exec(); // Modalità modale per evitare l'interazione con la finestra principale mentre la finestra dei dati è aperta
+    datiWindow->exec();
 }
-
-
-
-
-
 
 void VisualizzaSensori::grafico() {
-    // Crea una nuova finestra della classe GraficoView e passa il controller
     GraficoView *graficoView = new GraficoView(m_controller, tipo);
-    graficoView->show(); // Mostra la finestra
+    graficoView->show();
 }
 void VisualizzaSensori::modificaDescrizione() {
-    // Chiedi all'utente di inserire la nuova descrizione del sensore
     QString nuovaDescrizione = QInputDialog::getText(this, "Modifica Descrizione", "Inserisci la nuova descrizione:");
-
-    // Invia la nuova descrizione al controller per l'aggiornamento
     m_controller->setDescrizioneSensore(tipo, nuovaDescrizione);
-
-    // Visualizza la nuova descrizione
     visualizzaDescrizione();
 }
 
-// Aggiungi una nuova funzione privata visualizzaDescrizione() per ottenere e visualizzare la descrizione del sensore:
 void VisualizzaSensori::visualizzaDescrizione() {
-    // Ottieni la descrizione del sensore dal controller
     QString descrizione = m_controller->getDescrizioneSensore(tipo);
-
-    // Visualizza la descrizione nel QLabel
     lblDescrizione->setText("Descrizione: " + descrizione);
 }

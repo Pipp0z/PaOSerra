@@ -2,38 +2,40 @@
 
 int Luminosita::intensita = 75;
 
-Luminosita::Luminosita(){}
+Luminosita::Luminosita() {}
 
-  int Luminosita::getIntensita() {
+int Luminosita::getIntensita() {
     return intensita;
 }
-  bool Luminosita::aumentaIntensita(){
-      if(intensita>=100)
-          return false;
-      intensita+=5;
-      return true;
-  }
-  bool Luminosita::diminuisciIntensita(){
-      if(intensita<=0)
-          return false;
-      intensita-=5;
-      return true;
-  }
 
-  std::string Luminosita::toString() const{
-      std::string s="[Luminosita: \n";
-      s+=Sensore::toString();
-      s+="] \n";
-      return s;
-  }
-  int Luminosita::Qualita(Dato d)const {
-      if(d.getMisurazione()>85){
-          return 2;
-      }else if(d.getMisurazione()<65)
-          return 0;
+bool Luminosita::aumentaIntensita() {
+    if(intensita>=100)
+        return false;
+    intensita+=5;
+    return true;
+}
+bool Luminosita::diminuisciIntensita() {
+    if(intensita<=0)
+        return false;
+    intensita-=5;
+    return true;
+}
 
-      return 1;
-  }
-  std::string Luminosita::getType() const{
-      return "Lumen";
-  }
+std::string Luminosita::toString() const {
+    std::string s="[Luminosita: \n";
+    s+=Sensore::toString();
+    s+="] \n";
+    return s;
+}
+
+int Luminosita::Qualita(Dato d) const {
+    if(d.getMisurazione()>85){
+        return 2;
+    } else if (d.getMisurazione()<65)
+        return 0;
+    return 1;
+}
+
+std::string Luminosita::getType() const {
+    return "Lumen";
+}

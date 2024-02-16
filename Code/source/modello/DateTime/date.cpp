@@ -1,24 +1,21 @@
 #include "Date.h"
 
-int max (int a, int b)
-{
-    if (a>b) return(a) ; else return (b);
+int max (int a, int b) {
+    if (a>b) return(a);  else return (b);
 }
 
-int min (int a, int b)
-{
+int min (int a, int b) {
     if (a>b) return(b); else return (a);
 }
-// constructor definition
-Date::Date ()
-{
+
+Date::Date() {
     month = day = year = 1;
 }
-Date::Date(const Date& other)
-{
-    month =other.getMonth();
-    day =other.getDay();
-    year =other.getYear();
+
+Date::Date(const Date& other) {
+    month = other.getMonth();
+    day = other.getDay();
+    year = other.getYear();
 }
 
 // Funzione per la verifica della validità della data
@@ -38,29 +35,32 @@ Date::Date(int dy, int mh, int yr) {
     year = yr;
 }
 
-
-int Date::getMonth()const{
+int Date::getMonth() const {
     return month;
 }
-int Date::getYear()const{
+
+int Date::getYear() const {
     return year;
 }
-int Date::getDay()const{
+
+int Date::getDay() const {
     return day;
 }
 
-std::string Date::toString()const{
+std::string Date::toString() const {
     std::stringstream ss;
     ss << std::setw(2) << std::setfill('0') << day << "/"
        << std::setw(2) << std::setfill('0') << month << "/"
        << std::setw(2) << std::setfill('0') << year;
     return ss.str();
 }
+
 bool Date::operator==(const Date &other) const {
-    if(year==other.getYear()&&month==other.getMonth()&&day==other.getDay())
+    if(year == other.getYear() && month==other.getMonth() && day==other.getDay())
         return true;
     return false;
 }
+
 Date Date::convertFromString(const std::string& dateString) {
     Date convertedDate;
 
@@ -77,11 +77,9 @@ Date Date::convertFromString(const std::string& dateString) {
 
 Date& Date::operator=(const Date& other) const {
     if (this != &other) {
-        // Copia i dati da 'other' a 'this'
         const_cast<Date*>(this)->year = other.year;
         const_cast<Date*>(this)->month = other.month;
         const_cast<Date*>(this)->day = other.day;
     }
     return *const_cast<Date*>(this);
 }
-

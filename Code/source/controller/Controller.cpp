@@ -1,8 +1,6 @@
 #include "Controller.h"
-
 #include "../view/View.h"
 #include "../view/Visualizzasensori.h"
-
 
 bool Controller::m_luminositaCreated=false;
 bool Controller::m_umiditaCreated=false;
@@ -12,22 +10,14 @@ bool Controller::m_phSuoloCreated=false;
 Modello Controller::model;
 
 Controller::Controller(View *view, QObject *parent) : QObject(parent), m_view(view) {
-
-
-
     connect(m_view, &View::creaSensoreRequested, this, &Controller::toggleSensore);
     connect(m_view, &View::rimuoviSensoreRequested, this, &Controller::toggleSensore);
-
-
     connect(m_view, &View::caricaRequested, this, &Controller::onCaricaClicked);
     connect(m_view, &View::salvaRequested, this, &Controller::onSalvaClicked);
     connect(m_view, &View::datiRandomRequested, this, &Controller::onDatiRandomClicked);
-
-
-
 }
 
-Controller::Controller( QObject *parent) : QObject(parent){}
+Controller::Controller( QObject *parent) : QObject(parent) {}
 
 void Controller::toggleSensore(QString tipoSensore) {
     std::string s= tipoSensore.toStdString();
@@ -83,13 +73,12 @@ void Controller::toggleSensore(QString tipoSensore) {
         }
     }
 }
-bool Controller::verificaDisponibilitaSensore(QString tipoSensore){
+
+bool Controller::verificaDisponibilitaSensore(QString tipoSensore) {
     if(tipoSensore=="Lumen"){
         return m_luminositaCreated;
-
     }else if(tipoSensore=="g/m^3"){
         return m_umiditaCreated;
-
     }else if(tipoSensore=="mmho/cm"){
         return m_salinitaCreated;
     }else if(tipoSensore=="Celsius"){
@@ -100,8 +89,7 @@ bool Controller::verificaDisponibilitaSensore(QString tipoSensore){
     return false;
 }
 
-bool Controller::handleInserisciDato(double valore, int giorno, int mese, int anno, QTime ora, QString tipo)
-{
+bool Controller::handleInserisciDato(double valore, int giorno, int mese, int anno, QTime ora, QString tipo) {
     Date data(giorno,mese, anno);
     Time orario(ora.msecsSinceStartOfDay()/1000);
     Dato d(tipo.toStdString(),valore,data,orario);
@@ -109,32 +97,28 @@ bool Controller::handleInserisciDato(double valore, int giorno, int mese, int an
     return true;
 }
 
-bool Controller::handleRimuoviDato(const std::string orario,const std::string data, std::string tipo)
-{
+bool Controller::handleRimuoviDato(const std::string orario,const std::string data, std::string tipo) {
     model.eliminaDato(Date::convertFromString(data),Time::convertFromString(orario), tipo);
     return true;
 }
-QVector<Dato> Controller::richiediDati(const QString tipo){
+
+QVector<Dato> Controller::richiediDati(const QString tipo) {
     std::vector temp=model.visualizzaDati(tipo.toStdString());
     QVector<Dato> d(temp.begin(), temp.end());
     return d;
 }
 
-bool Controller::handleModificaDato(std::string orario, std::string data, double nuovoValore, std::string tipo)
-{
+bool Controller::handleModificaDato(std::string orario, std::string data, double nuovoValore, std::string tipo) {
     Dato d(tipo,nuovoValore,Date::convertFromString(data),Time::convertFromString(orario));
     model.modificaDato(d);
     return true;
 }
 
-
-
 void Controller::onCaricaClicked() {
-
     model.loadInfo("Dati.json");
     if(!model.isEmpty("Lumen")){
         m_luminositaCreated=true;
-    m_view->setLuminositaCreated(true);
+        m_view->setLuminositaCreated(true);
     }
     if(!model.isEmpty("g/m^3")){
         m_umiditaCreated=true;
@@ -152,12 +136,10 @@ void Controller::onCaricaClicked() {
         m_phSuoloCreated=true;
         m_view->setPhSuoloCreated(true);
     }
-
 }
 
 void Controller::onSalvaClicked() {
     model.saveInfo("Dati.json");
-
 }
 
 void Controller::onDatiRandomClicked() {
@@ -174,22 +156,22 @@ void Controller::onDatiRandomClicked() {
     m_view->setTemperaturaCreated(true);
     m_phSuoloCreated=true;
     m_view->setPhSuoloCreated(true);
-
 }
 
-QVector<Dato> Controller::richiediDatiGrafico(QString tipo){
+QVector<Dato> Controller::richiediDatiGrafico(QString tipo) {
     std::vector<Dato> d=model.visualizzaDati(tipo.toStdString());
     QVector<Dato> dati(d.begin(),d.end());
     return dati;
 }
 
-void Controller::setDescrizioneSensore(QString tipo,QString nuovaDescrizione){
+void Controller::setDescrizioneSensore(QString tipo,QString nuovaDescrizione) {
     model.setDescrizioneSensore(tipo.toStdString(), nuovaDescrizione.toStdString());
 }
-QString Controller::getDescrizioneSensore(QString tipo){
+
+QString Controller::getDescrizioneSensore(QString tipo) {
     return QString::fromStdString(model.getDescrizioneSensore(tipo.toStdString()));
 }
 
-int Controller::qualita(QString tipoMisura){
+int Controller::qualita(QString tipoMisura) {
     return model.Qualita(tipoMisura.toStdString());
 }

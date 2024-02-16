@@ -1,11 +1,4 @@
 #include "View.h"
-// #include "../controller/Controller.h"
-// #include "VisualizzaSensori.h"
-// #include <QPushButton>
-// #include <QVBoxLayout>
-// #include <QInputDialog>
-
-
 
 View::View(QWidget *parent) : QWidget(parent) {
     m_layout = new QGridLayout(this);
@@ -77,7 +70,6 @@ View::View(QWidget *parent) : QWidget(parent) {
     m_btnSalva->setEnabled(true);
     m_btnDatiRandom->setEnabled(true);
 
-
     connect(m_btnCreaLuminosita, &QPushButton::clicked, this, [this]() { onInserisciSensoreClicked("Lumen"); });
     connect(m_btnVisualizzaLuminosita, &QPushButton::clicked, this,  [this]() { onVisualizzaSensoreClicked("Lumen"); });
     connect(m_btnRimuoviLuminosita, &QPushButton::clicked, this,  [this]() { onRimuoviSensoreClicked("Lumen"); });
@@ -115,18 +107,19 @@ void View::setUmiditaCreated(bool created) {
 void View::setSalinitaCreated(bool created) {
     updateButtonsState(m_btnCreaSalinita, m_btnRimuoviSalinita, m_btnVisualizzaSalinita, created);
 }
+
 void View::setTemperaturaCreated(bool created) {
     updateButtonsState(m_btnCreaTemperatura, m_btnRimuoviTemperatura, m_btnVisualizzaTemperatura, created);
 }
+
 void View::setPhSuoloCreated(bool created) {
     updateButtonsState(m_btnCreaPhSuolo, m_btnRimuoviPhSuolo, m_btnVisualizzaPhSuolo, created);
 }
-void View::updateButtonsState(QPushButton *inserisci, QPushButton *rimuovi, QPushButton *visualizza, bool created) {
 
+void View::updateButtonsState(QPushButton *inserisci, QPushButton *rimuovi, QPushButton *visualizza, bool created) {
     inserisci->setEnabled(!created);
     rimuovi->setEnabled(created);
     visualizza->setEnabled(created);
-
 }
 
 void View::onInserisciSensoreClicked(const QString tipoSensore) {
@@ -138,50 +131,43 @@ void View::onRimuoviSensoreClicked(const QString tipoSensore) {
 }
 
 void View::onVisualizzaSensoreClicked(const QString tipoSensore) {
-
     VisualizzaSensori *finestraVisualizzaSensori = new VisualizzaSensori(tipoSensore);
     Controller *controller = new Controller();
     finestraVisualizzaSensori->setController(controller);
     finestraVisualizzaSensori->show();
 }
 
-
-void View::onCaricaClicked(){
+void View::onCaricaClicked() {
     emit caricaRequested();
 }
-void View::onSalvaClicked(){
+
+void View::onSalvaClicked() {
     emit salvaRequested();
 }
-void View::onDatiRandomClicked(){
+
+void View::onDatiRandomClicked() {
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(nullptr, "Conferma", "Sovrascriverai i dati attuali,\n vuoi davvero generare dati randomici?",
-                                  QMessageBox::Yes|QMessageBox::No);
+    reply = QMessageBox::question(nullptr, "Conferma", "Sovrascriverai i dati attuali,\n vuoi davvero generare dati randomici?", QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
-        // Emetti il segnale datiRandomRequested
         emit datiRandomRequested();
     }
 }
+
 void View::onRicercaSensoreClicked() {
-    // Crea una finestra di dialogo per la selezione dell'unità di misura del sensore
     QStringList unitaMisura;
     unitaMisura << "Lumen" << "g/m^3" << "mmho/cm" << "Celsius" << "pH";
     QString scelta = QInputDialog::getItem(this, "Ricerca Sensore", "Seleziona l'unità di misura del sensore:", unitaMisura, 0, false);
 
-    // Verifica se l'utente ha premuto il tasto "Cancel"
     if (scelta.isEmpty()) {
-        return; // Esci dalla funzione senza fare nulla se l'utente ha premuto "Cancel"
+        return; 
     }
 
     Controller *controller = new Controller();
-    // Verifica la disponibilità del sensore tramite il controller
     bool sensoreDisponibile = controller->verificaDisponibilitaSensore(scelta);
 
     if (sensoreDisponibile) {
-        // Se il sensore è disponibile, chiamiamo la funzione onVisualizzaSensoreClicked() con l'unità di misura scelta
         onVisualizzaSensoreClicked(scelta);
     } else {
-        // Se il sensore non è disponibile, mostriamo un messaggio di errore
         QMessageBox::critical(this, "Errore", "Sensore non disponibile.");
     }
 }
-

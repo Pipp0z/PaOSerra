@@ -6,9 +6,6 @@
 #include <QWidget>
 #include <QString>
 #include <QTime>
-
-// AGGIUNTI QUA PER VEDERE SE VA LO STESSO
-
 #include "../controller/Controller.h"
 #include <QInputDialog>
 #include "Graficoview.h"
@@ -16,8 +13,7 @@
 
 class Controller;
 
-class VisualizzaSensori : public QWidget
-{
+class VisualizzaSensori : public QWidget {
     Q_OBJECT
 
 public:

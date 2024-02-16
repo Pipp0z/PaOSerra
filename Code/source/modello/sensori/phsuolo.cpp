@@ -1,14 +1,14 @@
 #include "phsuolo.h"
+
 int PHSuolo::tipoSuolo=Suoli::Turba;
 
 PHSuolo::PHSuolo() {}
 
-
 bool PHSuolo::changeStato(int i) {
     tipoSuolo=i;
-
     return true;
 }
+
 bool PHSuolo::changeStato(std::string tipo) {
     if(tipo=="Turba"){
         tipoSuolo=0;
@@ -17,10 +17,10 @@ bool PHSuolo::changeStato(std::string tipo) {
     }else if(tipo=="Argillosa"){
         tipoSuolo=2;
     }
-    //se non dovesse essere nessuna di queste, rimane il valore di default
     return true;
 }
-std::string PHSuolo::getTipoSuolo(){
+
+std::string PHSuolo::getTipoSuolo() {
     switch (tipoSuolo) {
     case 0:
         return "Turba";
@@ -35,18 +35,18 @@ std::string PHSuolo::getTipoSuolo(){
         return "Sconosciuta";
         break;
     }
-
 }
 
-std::string PHSuolo::toString() const{
+std::string PHSuolo::toString() const {
     std::string s="[PHSuolo: \n";
     s+=Sensore::toString();
     s+="] \n";
     return s;
 }
-int PHSuolo::Qualita(Dato d)const {
+
+int PHSuolo::Qualita(Dato d) const {
     double misura=d.getMisurazione();
-    if(misura>10)//per fare rientrare i range nel caso si usi dati randomici o errori del sensore
+    if(misura>10)
         misura=misura/10;
     if(misura>7.5){
         return 2;
@@ -55,6 +55,7 @@ int PHSuolo::Qualita(Dato d)const {
 
     return 1;
 }
-std::string PHSuolo::getType() const{
+
+std::string PHSuolo::getType() const {
     return "pH";
 }

@@ -10,4 +10,3 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 };
-

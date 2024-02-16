@@ -1,14 +1,6 @@
 #include "Visualizzadatiwindow.h"
-// #include <QVBoxLayout>
-// #include <QLabel>
-// #include <QPushButton>
-// #include <QInputDialog>
-// #include <QMessageBox>
-// #include "../controller/Controller.h"
 
-VisualizzaDatiWindow::VisualizzaDatiWindow(const QVector<Dato>& dati, Controller* controller, QString tipo, QWidget *parent)
-    : QDialog(parent), unitaMis(tipo), m_dati(dati), m_controller(controller)
-{
+VisualizzaDatiWindow::VisualizzaDatiWindow(const QVector<Dato>& dati, Controller* controller, QString tipo, QWidget *parent): QDialog(parent), unitaMis(tipo), m_dati(dati), m_controller(controller) {
     layoutMain = new QVBoxLayout(this);
     setLayout(layoutMain);
 
@@ -33,13 +25,12 @@ VisualizzaDatiWindow::VisualizzaDatiWindow(const QVector<Dato>& dati, Controller
         rowLayout->addWidget(editButton);
 
         layoutMain->addLayout(rowLayout);
-
-        // Connessione dei segnali clicked dei pulsanti ai rispettivi slot
+        
         connect(removeButton, &QPushButton::clicked, this, [this, index]() { rimuoviDato(index); });
         connect(editButton, &QPushButton::clicked, this, [this, index]() { modificaDato(index); });
     }
 
-    setMinimumSize(400, 200); // Imposta una dimensione minima per la finestra
+    setMinimumSize(400, 200);
 }
 
 QPushButton* VisualizzaDatiWindow::createButton(const QString& text, const QString& tooltip) {
@@ -54,16 +45,12 @@ void VisualizzaDatiWindow::rimuoviDato(int index) {
 
     const Dato& dato = m_dati[index];
 
-    // Rimuovi il dato dal controller
     m_controller->handleRimuoviDato(dato.getOrario().toString(), dato.getData().toString(), unitaMis.toStdString());
 
-    // Rimuovi il dato dalla lista
     m_dati.remove(index);
 
-    // Chiudi la finestra corrente
     close();
 
-    // Apri una nuova istanza della finestra
     VisualizzaDatiWindow* newWindow = new VisualizzaDatiWindow(m_dati, m_controller, unitaMis, parentWidget());
     newWindow->show();
 }
@@ -74,20 +61,13 @@ void VisualizzaDatiWindow::modificaDato(int index) {
 
     Dato& dato = m_dati[index];
 
-    // Chiedi all'utente di inserire il nuovo valore del dato
     bool ok;
     double nuovoValore = QInputDialog::getDouble(this, "Modifica Dato", "Inserisci il nuovo valore del dato:", dato.getMisurazione(), 0, 100, 1, &ok);
     if (ok) {
-        // Modifica il dato nel controller
         m_controller->handleModificaDato(dato.getOrario().toString(), dato.getData().toString(), nuovoValore, unitaMis.toStdString());
-
-        // Aggiorna il valore del dato nella lista
         dato.setMisurazione(nuovoValore);
-
-        // Chiudi la finestra corrente
         close();
 
-        // Apri una nuova istanza della finestra
         VisualizzaDatiWindow* newWindow = new VisualizzaDatiWindow(m_dati, m_controller, unitaMis, parentWidget());
         newWindow->show();
     }

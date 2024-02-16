@@ -1,27 +1,29 @@
 #include "Umidita.h"
 
-
 bool Umidita::acceso(true);
-Umidita::Umidita(){}
 
-bool Umidita::changeStato(){
+Umidita::Umidita() {}
+
+bool Umidita::changeStato() {
     if(acceso)
         acceso=false;
     else
         acceso=true;
     return true;
 }
-bool  Umidita::getAcceso(){
+
+bool  Umidita::getAcceso() {
     return acceso;
 }
 
-std::string Umidita::toString() const{
+std::string Umidita::toString() const {
     std::string s="[Umidita: \n";
     s+=Sensore::toString();
     s+="] \n";
     return s;
 }
-int Umidita::Qualita(Dato d)const {
+
+int Umidita::Qualita(Dato d) const {
     double misura=d.getMisurazione();
 
     if(misura>15){
@@ -31,6 +33,7 @@ int Umidita::Qualita(Dato d)const {
 
     return 1;
 }
-std::string Umidita::getType() const{
+
+std::string Umidita::getType() const {
     return "g/m^3";
 }

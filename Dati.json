@@ -6,56 +6,20 @@
     },
     {
       "data": "16/02/2024",
-      "misura": 58.27879763999566,
-      "orario": "01:39:23",
+      "misura": 63.29845745497049,
+      "orario": "02:04:11",
       "unitaMisura": "Lumen"
     },
     {
       "data": "16/02/2024",
-      "misura": 12.889225971296328,
-      "orario": "02:39:23",
+      "misura": 43.65002731224072,
+      "orario": "06:04:11",
       "unitaMisura": "Lumen"
     },
     {
       "data": "16/02/2024",
-      "misura": 6.240978163620454,
-      "orario": "08:39:23",
-      "unitaMisura": "Lumen"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 2.837878220594274,
-      "orario": "12:39:23",
-      "unitaMisura": "Lumen"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 52.72584391851706,
-      "orario": "13:39:23",
-      "unitaMisura": "Lumen"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 38.73662616510884,
-      "orario": "14:39:23",
-      "unitaMisura": "Lumen"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 50.775222351103054,
-      "orario": "15:39:23",
-      "unitaMisura": "Lumen"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 46.279495875784946,
-      "orario": "16:39:23",
-      "unitaMisura": "Lumen"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 22.559928306601574,
-      "orario": "20:39:23",
+      "misura": 30.043310686736003,
+      "orario": "10:04:11",
       "unitaMisura": "Lumen"
     }
   ],
@@ -66,26 +30,14 @@
     },
     {
       "data": "16/02/2024",
-      "misura": 10.356593040354376,
-      "orario": "03:39:23",
+      "misura": 3.1527782814225525,
+      "orario": "09:04:11",
       "unitaMisura": "pH"
     },
     {
       "data": "16/02/2024",
-      "misura": 84.19715830927723,
-      "orario": "09:39:23",
-      "unitaMisura": "pH"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 69.63658223847466,
-      "orario": "21:39:23",
-      "unitaMisura": "pH"
-    },
-    {
-      "data": "16/02/2024",
-      "misura": 86.28836494933196,
-      "orario": "22:39:23",
+      "misura": 18.745834973818294,
+      "orario": "20:04:11",
       "unitaMisura": "pH"
     }
   ],
@@ -96,20 +48,44 @@
     },
     {
       "data": "16/02/2024",
-      "misura": 26.996284075217066,
-      "orario": "11:39:23",
+      "misura": 34.737410537083335,
+      "orario": "03:04:11",
       "unitaMisura": "mmho/cm"
     },
     {
       "data": "16/02/2024",
-      "misura": 55.639897393334934,
-      "orario": "17:39:23",
+      "misura": 66.58558762378452,
+      "orario": "05:04:11",
       "unitaMisura": "mmho/cm"
     },
     {
       "data": "16/02/2024",
-      "misura": 32.61987316503937,
-      "orario": "18:39:23",
+      "misura": 13.78362774558252,
+      "orario": "11:04:11",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 45.5511332610801,
+      "orario": "12:04:11",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 88.9099659851176,
+      "orario": "19:04:11",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 84.79152439861227,
+      "orario": "21:04:11",
+      "unitaMisura": "mmho/cm"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 18.588095278153098,
+      "orario": "22:04:11",
       "unitaMisura": "mmho/cm"
     }
   ],
@@ -120,26 +96,44 @@
     },
     {
       "data": "16/02/2024",
-      "misura": 76.71499673513608,
-      "orario": "00:39:23",
+      "misura": 64.40962787442479,
+      "orario": "00:04:11",
       "unitaMisura": "Celsius"
     },
     {
       "data": "16/02/2024",
-      "misura": 41.21116061706426,
-      "orario": "06:39:23",
+      "misura": 50.915909176118504,
+      "orario": "04:04:11",
       "unitaMisura": "Celsius"
     },
     {
       "data": "16/02/2024",
-      "misura": 80.06720968976705,
-      "orario": "07:39:23",
+      "misura": 85.22957249927788,
+      "orario": "07:04:11",
       "unitaMisura": "Celsius"
     },
     {
       "data": "16/02/2024",
-      "misura": 11.987019432928783,
-      "orario": "19:39:23",
+      "misura": 75.76905868791555,
+      "orario": "08:04:11",
+      "unitaMisura": "Celsius"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 22.846039451480625,
+      "orario": "14:04:11",
+      "unitaMisura": "Celsius"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 55.25274983299918,
+      "orario": "15:04:11",
+      "unitaMisura": "Celsius"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 49.784352470761675,
+      "orario": "16:04:11",
       "unitaMisura": "Celsius"
     }
   ],
@@ -150,20 +144,26 @@
     },
     {
       "data": "16/02/2024",
-      "misura": 45.85776717971413,
-      "orario": "04:39:23",
+      "misura": 33.950554414312876,
+      "orario": "01:04:11",
       "unitaMisura": "g/m^3"
     },
     {
       "data": "16/02/2024",
-      "misura": 99.30916917468784,
-      "orario": "05:39:23",
+      "misura": 19.284750970012833,
+      "orario": "13:04:11",
       "unitaMisura": "g/m^3"
     },
     {
       "data": "16/02/2024",
-      "misura": 46.304483441737325,
-      "orario": "10:39:23",
+      "misura": 42.79648314727888,
+      "orario": "17:04:11",
+      "unitaMisura": "g/m^3"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 89.33652438388997,
+      "orario": "18:04:11",
       "unitaMisura": "g/m^3"
     }
   ]

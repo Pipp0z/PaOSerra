@@ -4,8 +4,6 @@
 #include <QVector>
 #include "../modello/sensori/Dato.h"
 #include "qboxlayout.h"
-
-
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
@@ -16,15 +14,13 @@
 class QPushButton;
 class Controller;
 
-class VisualizzaDatiWindow : public QDialog
-{
+class VisualizzaDatiWindow : public QDialog {
     Q_OBJECT
 
 public:
     explicit VisualizzaDatiWindow(const QVector<Dato>& dati, Controller* controller, QString tipo, QWidget *parent = nullptr);
 
 private slots:
-
 
 private:
     QString unitaMis;
@@ -34,5 +30,4 @@ private:
     QPushButton* createButton(const QString& text, const QString& tooltip);
     void rimuoviDato( int index);
     void modificaDato( int index);
-
 };

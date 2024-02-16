@@ -3,7 +3,6 @@
 #include <QWidget>
 #include <QMessageBox>
 #include <QDebug>
-
 #include "../controller/Controller.h"
 #include "Visualizzasensori.h"
 #include <QPushButton>
@@ -23,30 +22,22 @@ public:
     void setTemperaturaCreated(bool created);
     void setPhSuoloCreated(bool created);
 
-
 signals:
     void creaSensoreRequested(QString tipoSensore);
-
     void rimuoviSensoreRequested(QString tipoSensore);
-
     void visualizzaSensoreRequested(QString tipoSensore);
-
     void caricaRequested();
     void salvaRequested();
     void datiRandomRequested();
-
-
 
 private slots:
     void onInserisciSensoreClicked(const QString tipoSensore);
     void onRimuoviSensoreClicked(const QString tipoSensore);
     void onVisualizzaSensoreClicked(const QString tipoSensore);
-
     void onCaricaClicked();
     void onSalvaClicked();
     void onDatiRandomClicked();
     void onRicercaSensoreClicked();
-
 
 private:
     void updateButtonsState(QPushButton *inserisci, QPushButton *rimuovi, QPushButton *visualizza, bool created);

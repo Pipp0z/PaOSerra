@@ -3,8 +3,6 @@
 #include <QWidget>
 #include <QtCharts>
 #include "../controller/Controller.h"
-
-
 #include <QChartView>
 #include <QLineSeries>
 #include <QChart>
