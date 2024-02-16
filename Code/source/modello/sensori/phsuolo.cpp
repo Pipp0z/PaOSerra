@@ -55,6 +55,6 @@ int PHSuolo::Qualita(Dato d)const {
 
     return 1;
 }
-std::type_index PHSuolo::getType() const{
-    return typeid(PHSuolo);
+std::string PHSuolo::getType() const{
+    return "pH";
 }

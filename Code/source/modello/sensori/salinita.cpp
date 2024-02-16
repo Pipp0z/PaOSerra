@@ -37,6 +37,6 @@ int Salinita::Qualita(Dato d)const {
 
     return 1;
 }
-std::type_index Salinita::getType() const{
-    return typeid(Salinita);
+std::string Salinita::getType() const{
+    return "mmho/cm";
 }

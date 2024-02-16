@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../DateTime/Date.h"
-#include "../DateTime/Time.h"
+#include "../DateTime/date.h"
+#include "../DateTime/time.h"
 
 
 class Dato

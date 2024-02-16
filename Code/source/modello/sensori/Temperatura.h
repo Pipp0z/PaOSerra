@@ -39,6 +39,6 @@ public:
      /*
      * @brief getType() ritorna il tipo della classe
      */
-    std::type_index getType() const override;
+    std::string getType() const override;
 };
 

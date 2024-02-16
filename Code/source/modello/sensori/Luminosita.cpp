@@ -34,6 +34,6 @@ Luminosita::Luminosita(){}
 
       return 1;
   }
-  std::type_index Luminosita::getType() const{
-      return typeid(Luminosita);
+  std::string Luminosita::getType() const{
+      return "Lumen";
   }

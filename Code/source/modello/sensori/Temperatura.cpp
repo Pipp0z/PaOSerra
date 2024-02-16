@@ -58,6 +58,6 @@ int Temperatura::Qualita(Dato d)const {
 
     return 1;
 }
-std::type_index Temperatura::getType() const{
-    return typeid(Temperatura);
+std::string Temperatura::getType() const{
+    return "Celsius";
 }

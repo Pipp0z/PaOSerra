@@ -1,5 +1,7 @@
 #include "Modello.h"
 
+
+
 Modello::Modello(){
     Serra();
 }
@@ -303,6 +305,11 @@ bool check=false;
 }
 
 bool Modello::randomDati(std::string data){
+    serra.rimuoviSensore("Lumen");
+    serra.rimuoviSensore("Celsius");
+    serra.rimuoviSensore("g/m^3");
+    serra.rimuoviSensore("mmho/cm");
+    serra.rimuoviSensore("pH");
     serra.inserisciSensori(new Luminosita);
     serra.inserisciSensori(new Umidita);
     serra.inserisciSensori(new PHSuolo);
@@ -355,4 +362,11 @@ std::string Modello::getDescrizioneSensore(std::string unitaMis){
 
 int Modello::Qualita(std::string unitaMis)const{
     return serra.Qualita(unitaMis);
+}
+std::vector<Dato>Modello::visualizzaDati(std::string s){
+    return serra.clona(s);
+}
+
+bool Modello::isEmpty(std::string s){
+    return serra.isEmpty(s);
 }

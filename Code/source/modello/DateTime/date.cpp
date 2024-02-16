@@ -1,4 +1,4 @@
-#include "Date.h"
+#include "date.h"
 
 int max (int a, int b)
 {
@@ -50,10 +50,11 @@ int Date::getDay()const{
 }
 
 std::string Date::toString()const{
-    std::string d= std::to_string(day);
-    std::string m= std::to_string(month);
-    std::string y= std::to_string(year);
-    return d+"/"+m+"/"+y;
+    std::stringstream ss;
+    ss << std::setw(2) << std::setfill('0') << day << "/"
+       << std::setw(2) << std::setfill('0') << month << "/"
+       << std::setw(2) << std::setfill('0') << year;
+    return ss.str();
 }
 bool Date::operator==(const Date &other) const {
     if(year==other.getYear()&&month==other.getMonth()&&day==other.getDay())

@@ -6,7 +6,7 @@ TEMPLATE = app
 TARGET = PaOSerra
 INCLUDEPATH += .
 QT += core gui widgets
-
+QT       +=  charts
 # You can make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
 # Please consult the documentation of the deprecated API in order to know
@@ -16,30 +16,40 @@ QT += core gui widgets
 
 # Input
 HEADERS += \
+    Code/source/controller/Controller.h \
+    Code/source/view/Graficoview.h \
+    Code/source/view/View.h \
+    Code/source/view/Visualizzadatiwindow.h \
+    Code/source/view/Visualizzasensori.h \
     Code/source/mainwindow.h \
-    Code/source/modello/Modello.h \
-    Code/source/modello/Serra.h \
-    Code/source/modello/DateTime/Date.h \
-    Code/source/modello/DateTime/Time.h \
+    Code/source/modello/modello.h \
+    Code/source/modello/serra.h \
+    Code/source/modello/DateTime/date.h \
+    Code/source/modello/DateTime/time.h \
     Code/source/modello/sensori/Dato.h \
     Code/source/modello/sensori/Luminosita.h \
-    Code/source/modello/sensori/PHSuolo.h \
-    Code/source/modello/sensori/Salinita.h \
-    Code/source/modello/sensori/Sensore.h \
+    Code/source/modello/sensori/phsuolo.h \
+    Code/source/modello/sensori/salinita.h \
+    Code/source/modello/sensori/sensore.h \
     Code/source/modello/sensori/Temperatura.h \
     Code/source/modello/sensori/Umidita.h
 SOURCES += \
     Code/source/main.cpp \
+    Code/source/controller/Controller.cpp \
+    Code/source/view/Graficoview.cpp \
+    Code/source/view/View.cpp \
+    Code/source/view/Visualizzadatiwindow.cpp \
+    Code/source/view/Visualizzasensori.cpp \
     Code/source/mainwindow.cpp \
-    Code/source/modello/Modello.cpp \
-    Code/source/modello/Serra.cpp \
-    Code/source/modello/DateTime/Date.cpp \
-    Code/source/modello/DateTime/Time.cpp \
+    Code/source/modello/modello.cpp \
+    Code/source/modello/serra.cpp \
+    Code/source/modello/DateTime/date.cpp \
+    Code/source/modello/DateTime/time.cpp \
     Code/source/modello/sensori/Dato.cpp \
     Code/source/modello/sensori/Luminosita.cpp \
-    Code/source/modello/sensori/PHSuolo.cpp \
-    Code/source/modello/sensori/Salinita.cpp \
-    Code/source/modello/sensori/Sensore.cpp \
+    Code/source/modello/sensori/phsuolo.cpp \
+    Code/source/modello/sensori/salinita.cpp \
+    Code/source/modello/sensori/sensore.cpp \
     Code/source/modello/sensori/Temperatura.cpp \
     Code/source/modello/sensori/Umidita.cpp
 

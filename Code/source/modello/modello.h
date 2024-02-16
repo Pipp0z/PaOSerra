@@ -96,7 +96,13 @@ public:
      */
     Sensore* cercaSensore( std::string s);
     /*
-     * @brief inserisciDato() inserisce un dato nel vettore con la stessa unita di misura
-     * @param dato dato da aggiungere
+     * @brief visualizzaDati() ritorna una copia del vettore con la stessa unita di misura
+     * @param s   unita misura
      */
+    std::vector<Dato> visualizzaDati(std::string s);
+    /*
+     * @brief isEmpty() ritorna un bool true se è vuoto, false altrimenti
+     * @param s   unita misura
+     */
+    bool isEmpty(std::string s);
 };

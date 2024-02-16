@@ -1,25 +1,13 @@
-#include "modello/Modello.h"
-#include <iostream>
+#include <QApplication>
+#include "view/View.h"
+#include "controller/Controller.h"
 
-int main()
-{
-    Modello m;
-    m.randomDati("18/01/2024");
-    Luminosita::aumentaIntensita();
-    m.rimuoviSensore("Lumen");
-    std::cout<<m.toString()<<std::endl;
-    try{
-    m.setDescrizioneSensore("Lumen", "Nera come la tua schiena, vestita da Sera");
-    }catch(const std::invalid_argument& e){
-        std::cout<<"Sensore non creato, metodo non disponibile"<<std::endl;
-    }
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
+    View view;
+    Controller controller(&view);
+    view.show();
 
-     m.saveInfo("Dati.json");
-      Temperatura::changeStato();
-
-
-    m.loadInfo("Dati.json");
-
-    std::cout<<m.toString()<<std::endl;
+    return app.exec();
 }

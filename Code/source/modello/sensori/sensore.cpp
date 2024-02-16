@@ -70,6 +70,6 @@ Dato Sensore::ultimoDato() const{
     }
     throw;
 }
-std::type_index Sensore::getType() const{
-    return typeid(Sensore);
+std::string Sensore::getType() const{
+    return "";
 }

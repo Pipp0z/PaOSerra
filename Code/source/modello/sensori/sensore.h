@@ -1,8 +1,8 @@
 #pragma once
 #include <typeindex>
 #include <vector>
-#include "../DateTime/Date.h"
-#include "../DateTime/Time.h"
+#include "../DateTime/date.h"
+#include "../DateTime/time.h"
 #include "Dato.h"
 
 class Sensore
@@ -72,7 +72,7 @@ public:
      /*
      * @brief getType() ritorna il tipo della classe
      */
-    virtual std::type_index getType() const;
+     virtual std::string getType() const;
 };
 
 

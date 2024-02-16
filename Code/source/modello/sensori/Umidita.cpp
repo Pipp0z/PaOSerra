@@ -31,6 +31,6 @@ int Umidita::Qualita(Dato d)const {
 
     return 1;
 }
-std::type_index Umidita::getType() const{
-    return typeid(Umidita);
+std::string Umidita::getType() const{
+    return "g/m^3";
 }
