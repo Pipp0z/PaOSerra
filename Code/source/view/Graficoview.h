@@ -1,10 +1,16 @@
-// In graficoview.h
-#ifndef GRAFICOVIEW_H
-#define GRAFICOVIEW_H
+#pragma once
 
 #include <QWidget>
 #include <QtCharts>
-#include "../controller/controller.h"
+#include "../controller/Controller.h"
+
+
+#include <QChartView>
+#include <QLineSeries>
+#include <QChart>
+#include <QValueAxis>
+#include <QDateTime>
+#include <QDebug>
 
 class GraficoView : public QWidget {
     Q_OBJECT
@@ -20,5 +26,3 @@ private:
     QChart *m_chart;
     QLineSeries *m_series;
 };
-
-#endif // GRAFICOVIEW_H

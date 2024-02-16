@@ -4,8 +4,10 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QChart>
-#include "../modello/modello.h"
+#include "../modello/Modello.h"
 #include <QTime>
+
+
 
 class View;
 class VisualizzaSensori;

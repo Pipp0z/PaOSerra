@@ -1,4 +1,4 @@
-#include "date.h"
+#include "Date.h"
 
 int max (int a, int b)
 {

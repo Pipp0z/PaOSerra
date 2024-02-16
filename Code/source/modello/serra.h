@@ -5,7 +5,7 @@
 #include "sensori/Umidita.h"
 #include "sensori/Temperatura.h"
 #include "sensori/Dato.h"
-#include "sensori/PHSuolo.h"
+#include "sensori/phsuolo.h"
 #include "sensori/Salinita.h"
 #include <algorithm>
 #include <typeindex>

@@ -1,7 +1,7 @@
-#include "controller.h"
+#include "Controller.h"
 
-#include "../view/view.h"
-#include "../view/VisualizzaSensori.h"
+#include "../view/View.h"
+#include "../view/Visualizzasensori.h"
 
 
 bool Controller::m_luminositaCreated=false;

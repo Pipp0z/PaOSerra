@@ -1,8 +1,11 @@
-#include "visualizzasensori.h"
-#include "../controller/controller.h"
-#include <QInputDialog>
-#include "GraficoView.h"
-#include "VisualizzaDatiWindow.h"
+#include "Visualizzasensori.h"
+
+//MESI DALL'ALTRA PARTE
+
+// #include "../controller/Controller.h"
+// #include <QInputDialog>
+// #include "Graficoview.h"
+// #include "VisualizzaDatiWindow.h"
 
 QString nomeTipo(QString tipo){
     if(tipo=="Lumen"){

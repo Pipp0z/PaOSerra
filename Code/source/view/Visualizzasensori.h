@@ -1,5 +1,4 @@
-#ifndef VISUALIZZASENSORI_H
-#define VISUALIZZASENSORI_H
+#pragma once
 
 #include "qboxlayout.h"
 #include "qlabel.h"
@@ -7,6 +6,13 @@
 #include <QWidget>
 #include <QString>
 #include <QTime>
+
+// AGGIUNTI QUA PER VEDERE SE VA LO STESSO
+
+#include "../controller/Controller.h"
+#include <QInputDialog>
+#include "Graficoview.h"
+#include "Visualizzadatiwindow.h"
 
 class Controller;
 
@@ -35,8 +41,4 @@ private:
     Controller *m_controller;
     QLabel *lblDescrizione;
     bool primaInterazione = true;
-
-    // Se necessario, puoi dichiarare altri pulsanti qui
 };
-
-#endif // VISUALIZZASENSORI_H

@@ -1,9 +1,9 @@
-#include "view.h"
-#include "../controller/Controller.h"
-#include "VisualizzaSensori.h"
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QInputDialog>
+#include "View.h"
+// #include "../controller/Controller.h"
+// #include "VisualizzaSensori.h"
+// #include <QPushButton>
+// #include <QVBoxLayout>
+// #include <QInputDialog>
 
 
 

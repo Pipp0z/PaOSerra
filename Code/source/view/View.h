@@ -1,9 +1,14 @@
-#ifndef VIEW_H
-#define VIEW_H
+#pragma once
 
 #include <QWidget>
 #include <QMessageBox>
 #include <QDebug>
+
+#include "../controller/Controller.h"
+#include "Visualizzasensori.h"
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QInputDialog>
 
 class QPushButton;
 class QGridLayout;
@@ -67,5 +72,3 @@ private:
     QPushButton *m_btnDatiRandom;
     QPushButton *m_btnRicercaSensore;
 };
-
-#endif // VIEW_H

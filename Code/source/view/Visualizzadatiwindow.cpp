@@ -1,10 +1,10 @@
-#include "visualizzadatiwindow.h"
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QInputDialog>
-#include <QMessageBox>
-#include "../controller/controller.h"
+#include "Visualizzadatiwindow.h"
+// #include <QVBoxLayout>
+// #include <QLabel>
+// #include <QPushButton>
+// #include <QInputDialog>
+// #include <QMessageBox>
+// #include "../controller/Controller.h"
 
 VisualizzaDatiWindow::VisualizzaDatiWindow(const QVector<Dato>& dati, Controller* controller, QString tipo, QWidget *parent)
     : QDialog(parent), unitaMis(tipo), m_dati(dati), m_controller(controller)

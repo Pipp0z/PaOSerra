@@ -1,26 +1,91 @@
 {
-  "Luminosita": [],
+  "Luminosita": [
+    {
+      "Descrizione": "",
+      "Stato": 75
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 58.27879763999566,
+      "orario": "01:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 12.889225971296328,
+      "orario": "02:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 6.240978163620454,
+      "orario": "08:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 2.837878220594274,
+      "orario": "12:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 52.72584391851706,
+      "orario": "13:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 38.73662616510884,
+      "orario": "14:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 50.775222351103054,
+      "orario": "15:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 46.279495875784946,
+      "orario": "16:39:23",
+      "unitaMisura": "Lumen"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 22.559928306601574,
+      "orario": "20:39:23",
+      "unitaMisura": "Lumen"
+    }
+  ],
   "PHSuolo": [
     {
       "Descrizione": "",
       "Stato": "Turba"
     },
     {
-      "data": "18/1/2024",
-      "misura": 57.763294638264085,
-      "orario": "04:56:44",
+      "data": "16/02/2024",
+      "misura": 10.356593040354376,
+      "orario": "03:39:23",
       "unitaMisura": "pH"
     },
     {
-      "data": "18/1/2024",
-      "misura": 80.43282535850884,
-      "orario": "05:56:44",
+      "data": "16/02/2024",
+      "misura": 84.19715830927723,
+      "orario": "09:39:23",
       "unitaMisura": "pH"
     },
     {
-      "data": "18/1/2024",
-      "misura": 99.53651581154102,
-      "orario": "13:56:44",
+      "data": "16/02/2024",
+      "misura": 69.63658223847466,
+      "orario": "21:39:23",
+      "unitaMisura": "pH"
+    },
+    {
+      "data": "16/02/2024",
+      "misura": 86.28836494933196,
+      "orario": "22:39:23",
       "unitaMisura": "pH"
     }
   ],
@@ -30,27 +95,21 @@
       "Stato": 7
     },
     {
-      "data": "18/1/2024",
-      "misura": 0.6379066641383325,
-      "orario": "08:56:44",
+      "data": "16/02/2024",
+      "misura": 26.996284075217066,
+      "orario": "11:39:23",
       "unitaMisura": "mmho/cm"
     },
     {
-      "data": "18/1/2024",
-      "misura": 89.88770325143994,
-      "orario": "10:56:44",
+      "data": "16/02/2024",
+      "misura": 55.639897393334934,
+      "orario": "17:39:23",
       "unitaMisura": "mmho/cm"
     },
     {
-      "data": "18/1/2024",
-      "misura": 87.15854239726062,
-      "orario": "17:56:44",
-      "unitaMisura": "mmho/cm"
-    },
-    {
-      "data": "18/1/2024",
-      "misura": 65.55346260035631,
-      "orario": "20:56:44",
+      "data": "16/02/2024",
+      "misura": 32.61987316503937,
+      "orario": "18:39:23",
       "unitaMisura": "mmho/cm"
     }
   ],
@@ -60,39 +119,27 @@
       "Stato": false
     },
     {
-      "data": "18/1/2024",
-      "misura": 78.83323461211964,
-      "orario": "00:56:44",
+      "data": "16/02/2024",
+      "misura": 76.71499673513608,
+      "orario": "00:39:23",
       "unitaMisura": "Celsius"
     },
     {
-      "data": "18/1/2024",
-      "misura": 45.19749297948309,
-      "orario": "02:56:44",
+      "data": "16/02/2024",
+      "misura": 41.21116061706426,
+      "orario": "06:39:23",
       "unitaMisura": "Celsius"
     },
     {
-      "data": "18/1/2024",
-      "misura": 22.023500671410165,
-      "orario": "11:56:44",
+      "data": "16/02/2024",
+      "misura": 80.06720968976705,
+      "orario": "07:39:23",
       "unitaMisura": "Celsius"
     },
     {
-      "data": "18/1/2024",
-      "misura": 35.761569536977575,
-      "orario": "14:56:44",
-      "unitaMisura": "Celsius"
-    },
-    {
-      "data": "18/1/2024",
-      "misura": 98.84391722627394,
-      "orario": "15:56:44",
-      "unitaMisura": "Celsius"
-    },
-    {
-      "data": "18/1/2024",
-      "misura": 32.257481805642925,
-      "orario": "16:56:44",
+      "data": "16/02/2024",
+      "misura": 11.987019432928783,
+      "orario": "19:39:23",
       "unitaMisura": "Celsius"
     }
   ],
@@ -102,39 +149,21 @@
       "Stato": true
     },
     {
-      "data": "18/1/2024",
-      "misura": 60.85549463221843,
-      "orario": "06:56:44",
+      "data": "16/02/2024",
+      "misura": 45.85776717971413,
+      "orario": "04:39:23",
       "unitaMisura": "g/m^3"
     },
     {
-      "data": "18/1/2024",
-      "misura": 4.436530184107206,
-      "orario": "09:56:44",
+      "data": "16/02/2024",
+      "misura": 99.30916917468784,
+      "orario": "05:39:23",
       "unitaMisura": "g/m^3"
     },
     {
-      "data": "18/1/2024",
-      "misura": 18.233814705364175,
-      "orario": "12:56:44",
-      "unitaMisura": "g/m^3"
-    },
-    {
-      "data": "18/1/2024",
-      "misura": 95.31560802708843,
-      "orario": "18:56:44",
-      "unitaMisura": "g/m^3"
-    },
-    {
-      "data": "18/1/2024",
-      "misura": 62.746195766326,
-      "orario": "19:56:44",
-      "unitaMisura": "g/m^3"
-    },
-    {
-      "data": "18/1/2024",
-      "misura": 11.339383660761989,
-      "orario": "21:56:44",
+      "data": "16/02/2024",
+      "misura": 46.304483441737325,
+      "orario": "10:39:23",
       "unitaMisura": "g/m^3"
     }
   ]

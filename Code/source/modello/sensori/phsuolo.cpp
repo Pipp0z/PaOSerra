@@ -1,4 +1,4 @@
-#include "PHSuolo.h"
+#include "phsuolo.h"
 int PHSuolo::tipoSuolo=Suoli::Turba;
 
 PHSuolo::PHSuolo() {}

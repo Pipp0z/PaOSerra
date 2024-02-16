@@ -1,11 +1,17 @@
-// In VisualizzaDatiWindow.h
-#ifndef VISUALIZZADATIWINDOW_H
-#define VISUALIZZADATIWINDOW_H
+#pragma once
 
 #include <QDialog>
 #include <QVector>
 #include "../modello/sensori/Dato.h"
 #include "qboxlayout.h"
+
+
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QInputDialog>
+#include <QMessageBox>
+#include "../controller/Controller.h"
 
 class QPushButton;
 class Controller;
@@ -30,5 +36,3 @@ private:
     void modificaDato( int index);
 
 };
-
-#endif // VISUALIZZADATIWINDOW_H

@@ -1,10 +1,10 @@
-#include "graficoview.h"
-#include <QChartView>
-#include <QLineSeries>
-#include <QChart>
-#include <QValueAxis>
-#include <QDateTime>
-#include <QDebug>
+#include "Graficoview.h"
+// #include <QChartView>
+// #include <QLineSeries>
+// #include <QChart>
+// #include <QValueAxis>
+// #include <QDateTime>
+// #include <QDebug>
 
 GraficoView::GraficoView(Controller *controller, const QString tipoMisura, QWidget *parent)
     : QWidget(parent), uniMis(tipoMisura), m_controller(controller)
