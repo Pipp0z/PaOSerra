@@ -12,7 +12,7 @@ public:
     ~Salinita() =default;
     int static getSalinita();
     std::string toString() const override;
-    int Qualita(Dato d)const override;
+    int qualita(Dato d)const override;
     std::string getType() const override;
 };
 

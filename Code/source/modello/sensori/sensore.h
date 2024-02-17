@@ -21,7 +21,7 @@ public:
     bool setDescrizione(std::string s);
     virtual ~Sensore()=default;
     virtual std::string toString()const ;
-    virtual int Qualita(Dato d)const =0;
+    virtual int qualita(Dato d)const =0;
     Dato ultimoDato() const;
     virtual std::string getType() const;
 };

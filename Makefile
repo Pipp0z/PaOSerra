@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_OPENGLWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=14.0 -Wall -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=14.0 -Wall -Wextra $(DEFINES)
-INCPATH       = -I. -I. -Ijson/single_include/nlohmann/ -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I/opt/homebrew/share/qt/mkspecs/macx-clang -F/opt/homebrew/lib
+INCPATH       = -I. -I. -Ijson/single_include/nlohmann/ -I/opt/homebrew/lib/QtCharts.framework/Headers -I/opt/homebrew/lib/QtOpenGLWidgets.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtOpenGL.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I/opt/homebrew/share/qt/mkspecs/macx-clang -F/opt/homebrew/lib
 QMAKE         = /opt/homebrew/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = PaOSerra1.0.0
 DISTDIR = /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/.tmp/PaOSerra1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=14.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/opt/homebrew/lib
-LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
+LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework QtCharts -framework QtOpenGLWidgets -framework QtWidgets -framework QtOpenGL -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -53,31 +53,51 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = Code/source/main.cpp \
+		Code/source/controller/Controller.cpp \
+		Code/source/view/Graficoview.cpp \
+		Code/source/view/View.cpp \
+		Code/source/view/Visualizzadatiwindow.cpp \
+		Code/source/view/Visualizzasensori.cpp \
 		Code/source/mainwindow.cpp \
-		Code/source/modello/Modello.cpp \
-		Code/source/modello/Serra.cpp \
-		Code/source/modello/DateTime/Date.cpp \
-		Code/source/modello/DateTime/Time.cpp \
+		Code/source/modello/modello.cpp \
+		Code/source/modello/serra.cpp \
+		Code/source/modello/DateTime/date.cpp \
+		Code/source/modello/DateTime/time.cpp \
 		Code/source/modello/sensori/Dato.cpp \
 		Code/source/modello/sensori/Luminosita.cpp \
-		Code/source/modello/sensori/PHSuolo.cpp \
-		Code/source/modello/sensori/Salinita.cpp \
-		Code/source/modello/sensori/Sensore.cpp \
+		Code/source/modello/sensori/phsuolo.cpp \
+		Code/source/modello/sensori/salinita.cpp \
+		Code/source/modello/sensori/sensore.cpp \
 		Code/source/modello/sensori/Temperatura.cpp \
-		Code/source/modello/sensori/Umidita.cpp moc_mainwindow.cpp
+		Code/source/modello/sensori/Umidita.cpp moc_Controller.cpp \
+		moc_Graficoview.cpp \
+		moc_View.cpp \
+		moc_Visualizzadatiwindow.cpp \
+		moc_Visualizzasensori.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
+		Controller.o \
+		Graficoview.o \
+		View.o \
+		Visualizzadatiwindow.o \
+		Visualizzasensori.o \
 		mainwindow.o \
-		Modello.o \
-		Serra.o \
-		Date.o \
-		Time.o \
+		modello.o \
+		serra.o \
+		date.o \
+		time.o \
 		Dato.o \
 		Luminosita.o \
-		PHSuolo.o \
-		Salinita.o \
-		Sensore.o \
+		phsuolo.o \
+		salinita.o \
+		sensore.o \
 		Temperatura.o \
 		Umidita.o \
+		moc_Controller.o \
+		moc_Graficoview.o \
+		moc_View.o \
+		moc_Visualizzadatiwindow.o \
+		moc_Visualizzasensori.o \
 		moc_mainwindow.o
 DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/device_config.prf \
@@ -362,7 +382,6 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/qt_config.prf \
 		/opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf \
 		/opt/homebrew/share/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/opt/homebrew/share/qt/mkspecs/features/exclusive_builds.prf \
 		/opt/homebrew/share/qt/mkspecs/features/mac/sdk.prf \
 		/opt/homebrew/share/qt/mkspecs/features/toolchain.prf \
@@ -391,28 +410,38 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/exceptions.prf \
 		/opt/homebrew/share/qt/mkspecs/features/yacc.prf \
 		/opt/homebrew/share/qt/mkspecs/features/lex.prf \
-		PaOSerra.pro Code/source/mainwindow.h \
-		Code/source/modello/Modello.h \
-		Code/source/modello/Serra.h \
-		Code/source/modello/DateTime/Date.h \
-		Code/source/modello/DateTime/Time.h \
+		PaOSerra.pro Code/source/controller/Controller.h \
+		Code/source/view/Graficoview.h \
+		Code/source/view/View.h \
+		Code/source/view/Visualizzadatiwindow.h \
+		Code/source/view/Visualizzasensori.h \
+		Code/source/mainwindow.h \
+		Code/source/modello/modello.h \
+		Code/source/modello/serra.h \
+		Code/source/modello/DateTime/date.h \
+		Code/source/modello/DateTime/time.h \
 		Code/source/modello/sensori/Dato.h \
 		Code/source/modello/sensori/Luminosita.h \
-		Code/source/modello/sensori/PHSuolo.h \
-		Code/source/modello/sensori/Salinita.h \
-		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/salinita.h \
+		Code/source/modello/sensori/sensore.h \
 		Code/source/modello/sensori/Temperatura.h \
 		Code/source/modello/sensori/Umidita.h Code/source/main.cpp \
+		Code/source/controller/Controller.cpp \
+		Code/source/view/Graficoview.cpp \
+		Code/source/view/View.cpp \
+		Code/source/view/Visualizzadatiwindow.cpp \
+		Code/source/view/Visualizzasensori.cpp \
 		Code/source/mainwindow.cpp \
-		Code/source/modello/Modello.cpp \
-		Code/source/modello/Serra.cpp \
-		Code/source/modello/DateTime/Date.cpp \
-		Code/source/modello/DateTime/Time.cpp \
+		Code/source/modello/modello.cpp \
+		Code/source/modello/serra.cpp \
+		Code/source/modello/DateTime/date.cpp \
+		Code/source/modello/DateTime/time.cpp \
 		Code/source/modello/sensori/Dato.cpp \
 		Code/source/modello/sensori/Luminosita.cpp \
-		Code/source/modello/sensori/PHSuolo.cpp \
-		Code/source/modello/sensori/Salinita.cpp \
-		Code/source/modello/sensori/Sensore.cpp \
+		Code/source/modello/sensori/phsuolo.cpp \
+		Code/source/modello/sensori/salinita.cpp \
+		Code/source/modello/sensori/sensore.cpp \
 		Code/source/modello/sensori/Temperatura.cpp \
 		Code/source/modello/sensori/Umidita.cpp
 QMAKE_TARGET  = PaOSerra
@@ -423,7 +452,7 @@ TARGET        = PaOSerra.app/Contents/MacOS/PaOSerra
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 14.0
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/.qmake.stash
+EXPORT__QMAKE_STASH_ = 
 EXPORT_VALID_ARCHS = arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -722,7 +751,6 @@ Makefile: PaOSerra.pro /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf /opt
 		/opt/homebrew/share/qt/mkspecs/features/qt_config.prf \
 		/opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf \
 		/opt/homebrew/share/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/opt/homebrew/share/qt/mkspecs/features/exclusive_builds.prf \
 		/opt/homebrew/share/qt/mkspecs/features/mac/sdk.prf \
 		/opt/homebrew/share/qt/mkspecs/features/toolchain.prf \
@@ -752,7 +780,10 @@ Makefile: PaOSerra.pro /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf /opt
 		/opt/homebrew/share/qt/mkspecs/features/yacc.prf \
 		/opt/homebrew/share/qt/mkspecs/features/lex.prf \
 		PaOSerra.pro \
+		/opt/homebrew/lib/QtCharts.framework/Resources/QtCharts.prl \
+		/opt/homebrew/lib/QtOpenGLWidgets.framework/Resources/QtOpenGLWidgets.prl \
 		/opt/homebrew/lib/QtWidgets.framework/Resources/QtWidgets.prl \
+		/opt/homebrew/lib/QtOpenGL.framework/Resources/QtOpenGL.prl \
 		/opt/homebrew/lib/QtGui.framework/Resources/QtGui.prl \
 		/opt/homebrew/lib/QtCore.framework/Resources/QtCore.prl
 	$(QMAKE) -o Makefile PaOSerra.pro
@@ -1039,7 +1070,6 @@ Makefile: PaOSerra.pro /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf /opt
 /opt/homebrew/share/qt/mkspecs/features/qt_config.prf:
 /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf:
 /opt/homebrew/share/qt/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /opt/homebrew/share/qt/mkspecs/features/exclusive_builds.prf:
 /opt/homebrew/share/qt/mkspecs/features/mac/sdk.prf:
 /opt/homebrew/share/qt/mkspecs/features/toolchain.prf:
@@ -1069,7 +1099,10 @@ Makefile: PaOSerra.pro /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf /opt
 /opt/homebrew/share/qt/mkspecs/features/yacc.prf:
 /opt/homebrew/share/qt/mkspecs/features/lex.prf:
 PaOSerra.pro:
+/opt/homebrew/lib/QtCharts.framework/Resources/QtCharts.prl:
+/opt/homebrew/lib/QtOpenGLWidgets.framework/Resources/QtOpenGLWidgets.prl:
 /opt/homebrew/lib/QtWidgets.framework/Resources/QtWidgets.prl:
+/opt/homebrew/lib/QtOpenGL.framework/Resources/QtOpenGL.prl:
 /opt/homebrew/lib/QtGui.framework/Resources/QtGui.prl:
 /opt/homebrew/lib/QtCore.framework/Resources/QtCore.prl:
 qmake: FORCE
@@ -1097,8 +1130,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Code/source/mainwindow.h Code/source/modello/Modello.h Code/source/modello/Serra.h Code/source/modello/DateTime/Date.h Code/source/modello/DateTime/Time.h Code/source/modello/sensori/Dato.h Code/source/modello/sensori/Luminosita.h Code/source/modello/sensori/PHSuolo.h Code/source/modello/sensori/Salinita.h Code/source/modello/sensori/Sensore.h Code/source/modello/sensori/Temperatura.h Code/source/modello/sensori/Umidita.h $(DISTDIR)/
-	$(COPY_FILE) --parents Code/source/main.cpp Code/source/mainwindow.cpp Code/source/modello/Modello.cpp Code/source/modello/Serra.cpp Code/source/modello/DateTime/Date.cpp Code/source/modello/DateTime/Time.cpp Code/source/modello/sensori/Dato.cpp Code/source/modello/sensori/Luminosita.cpp Code/source/modello/sensori/PHSuolo.cpp Code/source/modello/sensori/Salinita.cpp Code/source/modello/sensori/Sensore.cpp Code/source/modello/sensori/Temperatura.cpp Code/source/modello/sensori/Umidita.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Code/source/controller/Controller.h Code/source/view/Graficoview.h Code/source/view/View.h Code/source/view/Visualizzadatiwindow.h Code/source/view/Visualizzasensori.h Code/source/mainwindow.h Code/source/modello/modello.h Code/source/modello/serra.h Code/source/modello/DateTime/date.h Code/source/modello/DateTime/time.h Code/source/modello/sensori/Dato.h Code/source/modello/sensori/Luminosita.h Code/source/modello/sensori/phsuolo.h Code/source/modello/sensori/salinita.h Code/source/modello/sensori/sensore.h Code/source/modello/sensori/Temperatura.h Code/source/modello/sensori/Umidita.h $(DISTDIR)/
+	$(COPY_FILE) --parents Code/source/main.cpp Code/source/controller/Controller.cpp Code/source/view/Graficoview.cpp Code/source/view/View.cpp Code/source/view/Visualizzadatiwindow.cpp Code/source/view/Visualizzasensori.cpp Code/source/mainwindow.cpp Code/source/modello/modello.cpp Code/source/modello/serra.cpp Code/source/modello/DateTime/date.cpp Code/source/modello/DateTime/time.cpp Code/source/modello/sensori/Dato.cpp Code/source/modello/sensori/Luminosita.cpp Code/source/modello/sensori/phsuolo.cpp Code/source/modello/sensori/salinita.cpp Code/source/modello/sensori/sensore.cpp Code/source/modello/sensori/Temperatura.cpp Code/source/modello/sensori/Umidita.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1108,7 +1141,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r PaOSerra.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -1133,15 +1165,382 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=14.0 -Wall -Wextra -dM -E -o moc_predefs.h /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_Controller.cpp moc_Graficoview.cpp moc_View.cpp moc_Visualizzadatiwindow.cpp moc_Visualizzasensori.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_Controller.cpp moc_Graficoview.cpp moc_View.cpp moc_Visualizzadatiwindow.cpp moc_Visualizzasensori.cpp moc_mainwindow.cpp
+moc_Controller.cpp: Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/json/single_include/nlohmann -I/opt/homebrew/lib/QtCharts.framework/Headers -I/opt/homebrew/lib/QtOpenGLWidgets.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtOpenGL.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib Code/source/controller/Controller.h -o moc_Controller.cpp
+
+moc_Graficoview.cpp: Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/json/single_include/nlohmann -I/opt/homebrew/lib/QtCharts.framework/Headers -I/opt/homebrew/lib/QtOpenGLWidgets.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtOpenGL.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib Code/source/view/Graficoview.h -o moc_Graficoview.cpp
+
+moc_View.cpp: Code/source/view/View.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		Code/source/view/Visualizzasensori.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
+		Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/json/single_include/nlohmann -I/opt/homebrew/lib/QtCharts.framework/Headers -I/opt/homebrew/lib/QtOpenGLWidgets.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtOpenGL.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib Code/source/view/View.h -o moc_View.cpp
+
+moc_Visualizzadatiwindow.cpp: Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/json/single_include/nlohmann -I/opt/homebrew/lib/QtCharts.framework/Headers -I/opt/homebrew/lib/QtOpenGLWidgets.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtOpenGL.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib Code/source/view/Visualizzadatiwindow.h -o moc_Visualizzadatiwindow.cpp
+
+moc_Visualizzasensori.cpp: Code/source/view/Visualizzasensori.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
+		Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/json/single_include/nlohmann -I/opt/homebrew/lib/QtCharts.framework/Headers -I/opt/homebrew/lib/QtOpenGLWidgets.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtOpenGL.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib Code/source/view/Visualizzasensori.h -o moc_Visualizzasensori.cpp
+
 moc_mainwindow.cpp: Code/source/mainwindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/json/single_include/nlohmann -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib Code/source/mainwindow.h -o moc_mainwindow.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra -I/Users/filipporizzolo/Documents/UniPD/anno3/recupero2/pao/PaOSerra/json/single_include/nlohmann -I/opt/homebrew/lib/QtCharts.framework/Headers -I/opt/homebrew/lib/QtOpenGLWidgets.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtOpenGL.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib Code/source/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1161,7 +1560,21 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ####### Compile
 
-main.o: Code/source/main.cpp Code/source/modello/Modello.h \
+main.o: Code/source/main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+		Code/source/view/View.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
 		Code/source/modello/Serra.h \
 		Code/source/modello/sensori/Sensore.h \
 		Code/source/modello/DateTime/Date.h \
@@ -1170,17 +1583,531 @@ main.o: Code/source/main.cpp Code/source/modello/Modello.h \
 		Code/source/modello/sensori/Luminosita.h \
 		Code/source/modello/sensori/Umidita.h \
 		Code/source/modello/sensori/Temperatura.h \
-		Code/source/modello/sensori/PHSuolo.h \
+		Code/source/modello/sensori/phsuolo.h \
 		Code/source/modello/sensori/Salinita.h \
-		Code/json/single_include/nlohmann/json.hpp
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		Code/source/view/Visualizzasensori.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
+		Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o Code/source/main.cpp
+
+Controller.o: Code/source/controller/Controller.cpp Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		Code/source/view/View.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		Code/source/view/Visualizzasensori.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
+		Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Controller.o Code/source/controller/Controller.cpp
+
+Graficoview.o: Code/source/view/Graficoview.cpp Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Graficoview.o Code/source/view/Graficoview.cpp
+
+View.o: Code/source/view/View.cpp Code/source/view/View.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		Code/source/view/Visualizzasensori.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
+		Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o View.o Code/source/view/View.cpp
+
+Visualizzadatiwindow.o: Code/source/view/Visualizzadatiwindow.cpp Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Visualizzadatiwindow.o Code/source/view/Visualizzadatiwindow.cpp
+
+Visualizzasensori.o: Code/source/view/Visualizzasensori.cpp Code/source/view/Visualizzasensori.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTime \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		Code/source/controller/Controller.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChart \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchart.h \
+		Code/source/modello/Modello.h \
+		Code/source/modello/Serra.h \
+		Code/source/modello/sensori/Sensore.h \
+		Code/source/modello/DateTime/Date.h \
+		Code/source/modello/DateTime/Time.h \
+		Code/source/modello/sensori/Dato.h \
+		Code/source/modello/sensori/Luminosita.h \
+		Code/source/modello/sensori/Umidita.h \
+		Code/source/modello/sensori/Temperatura.h \
+		Code/source/modello/sensori/phsuolo.h \
+		Code/source/modello/sensori/Salinita.h \
+		Code/json/single_include/nlohmann/json.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		Code/source/view/Graficoview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QtCharts \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartglobal.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qabstractseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qarealegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qareaseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qbarset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxplotseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qboxset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlesticklegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcandlestickset.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcategoryaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qchartview.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qcoloraxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qdatetimeaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhorizontalstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qhxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegend.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qlogvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpercentbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpielegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpieslice.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qpolarchart.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qscatterseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qsplineseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qstackedbarseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qtchartsversion.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvalueaxis.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvbarmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvboxplotmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvcandlestickmodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvpiemodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qvxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxylegendmarker.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxymodelmapper.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/qxyseries.h \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QChartView \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QLineSeries \
+		/opt/homebrew/lib/QtCharts.framework/Headers/QValueAxis \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
+		Code/source/view/Visualizzadatiwindow.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Visualizzasensori.o Code/source/view/Visualizzasensori.cpp
 
 mainwindow.o: Code/source/mainwindow.cpp Code/source/mainwindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o Code/source/mainwindow.cpp
 
-Modello.o: Code/source/modello/Modello.cpp Code/source/modello/Modello.h \
+modello.o: Code/source/modello/modello.cpp Code/source/modello/Modello.h \
 		Code/source/modello/Serra.h \
 		Code/source/modello/sensori/Sensore.h \
 		Code/source/modello/DateTime/Date.h \
@@ -1189,12 +2116,12 @@ Modello.o: Code/source/modello/Modello.cpp Code/source/modello/Modello.h \
 		Code/source/modello/sensori/Luminosita.h \
 		Code/source/modello/sensori/Umidita.h \
 		Code/source/modello/sensori/Temperatura.h \
-		Code/source/modello/sensori/PHSuolo.h \
+		Code/source/modello/sensori/phsuolo.h \
 		Code/source/modello/sensori/Salinita.h \
 		Code/json/single_include/nlohmann/json.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Modello.o Code/source/modello/Modello.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modello.o Code/source/modello/modello.cpp
 
-Serra.o: Code/source/modello/Serra.cpp Code/source/modello/Serra.h \
+serra.o: Code/source/modello/serra.cpp Code/source/modello/Serra.h \
 		Code/source/modello/sensori/Sensore.h \
 		Code/source/modello/DateTime/Date.h \
 		Code/source/modello/DateTime/Time.h \
@@ -1202,15 +2129,15 @@ Serra.o: Code/source/modello/Serra.cpp Code/source/modello/Serra.h \
 		Code/source/modello/sensori/Luminosita.h \
 		Code/source/modello/sensori/Umidita.h \
 		Code/source/modello/sensori/Temperatura.h \
-		Code/source/modello/sensori/PHSuolo.h \
+		Code/source/modello/sensori/phsuolo.h \
 		Code/source/modello/sensori/Salinita.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Serra.o Code/source/modello/Serra.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serra.o Code/source/modello/serra.cpp
 
-Date.o: Code/source/modello/DateTime/Date.cpp Code/source/modello/DateTime/Date.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Date.o Code/source/modello/DateTime/Date.cpp
+date.o: Code/source/modello/DateTime/date.cpp Code/source/modello/DateTime/Date.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o date.o Code/source/modello/DateTime/date.cpp
 
-Time.o: Code/source/modello/DateTime/Time.cpp Code/source/modello/DateTime/Time.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Time.o Code/source/modello/DateTime/Time.cpp
+time.o: Code/source/modello/DateTime/time.cpp Code/source/modello/DateTime/Time.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o time.o Code/source/modello/DateTime/time.cpp
 
 Dato.o: Code/source/modello/sensori/Dato.cpp Code/source/modello/sensori/Dato.h \
 		Code/source/modello/DateTime/Date.h \
@@ -1224,25 +2151,25 @@ Luminosita.o: Code/source/modello/sensori/Luminosita.cpp Code/source/modello/sen
 		Code/source/modello/sensori/Dato.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Luminosita.o Code/source/modello/sensori/Luminosita.cpp
 
-PHSuolo.o: Code/source/modello/sensori/PHSuolo.cpp Code/source/modello/sensori/PHSuolo.h \
+phsuolo.o: Code/source/modello/sensori/phsuolo.cpp Code/source/modello/sensori/phsuolo.h \
 		Code/source/modello/sensori/Sensore.h \
 		Code/source/modello/DateTime/Date.h \
 		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PHSuolo.o Code/source/modello/sensori/PHSuolo.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o phsuolo.o Code/source/modello/sensori/phsuolo.cpp
 
-Salinita.o: Code/source/modello/sensori/Salinita.cpp Code/source/modello/sensori/Salinita.h \
+salinita.o: Code/source/modello/sensori/salinita.cpp Code/source/modello/sensori/Salinita.h \
 		Code/source/modello/sensori/Sensore.h \
 		Code/source/modello/DateTime/Date.h \
 		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Salinita.o Code/source/modello/sensori/Salinita.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o salinita.o Code/source/modello/sensori/salinita.cpp
 
-Sensore.o: Code/source/modello/sensori/Sensore.cpp Code/source/modello/sensori/Sensore.h \
+sensore.o: Code/source/modello/sensori/sensore.cpp Code/source/modello/sensori/Sensore.h \
 		Code/source/modello/DateTime/Date.h \
 		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Sensore.o Code/source/modello/sensori/Sensore.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sensore.o Code/source/modello/sensori/sensore.cpp
 
 Temperatura.o: Code/source/modello/sensori/Temperatura.cpp Code/source/modello/sensori/Temperatura.h \
 		Code/source/modello/sensori/Sensore.h \
@@ -1257,6 +2184,21 @@ Umidita.o: Code/source/modello/sensori/Umidita.cpp Code/source/modello/sensori/U
 		Code/source/modello/DateTime/Time.h \
 		Code/source/modello/sensori/Dato.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Umidita.o Code/source/modello/sensori/Umidita.cpp
+
+moc_Controller.o: moc_Controller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Controller.o moc_Controller.cpp
+
+moc_Graficoview.o: moc_Graficoview.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Graficoview.o moc_Graficoview.cpp
+
+moc_View.o: moc_View.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_View.o moc_View.cpp
+
+moc_Visualizzadatiwindow.o: moc_Visualizzadatiwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Visualizzadatiwindow.o moc_Visualizzadatiwindow.cpp
+
+moc_Visualizzasensori.o: moc_Visualizzasensori.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Visualizzasensori.o moc_Visualizzasensori.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

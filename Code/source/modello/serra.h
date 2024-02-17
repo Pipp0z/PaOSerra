@@ -34,6 +34,6 @@ public:
     std::string toString() const;
     bool setDescrizioneSensore(std::string unitaMis, std::string desc);
     std::string getDescrizioneSensore(std::string unitaMis);
-    int Qualita(std::string unitaMis)const;
+    int qualita(std::string unitaMis)const;
 };
 

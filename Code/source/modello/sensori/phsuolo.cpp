@@ -44,7 +44,7 @@ std::string PHSuolo::toString() const {
     return s;
 }
 
-int PHSuolo::Qualita(Dato d) const {
+int PHSuolo::qualita(Dato d) const {
     double misura=d.getMisurazione();
     if(misura>10)
         misura=misura/10;

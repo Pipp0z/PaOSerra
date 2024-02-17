@@ -28,7 +28,7 @@ std::string Luminosita::toString() const {
     return s;
 }
 
-int Luminosita::Qualita(Dato d) const {
+int Luminosita::qualita(Dato d) const {
     if(d.getMisurazione()>85){
         return 2;
     } else if (d.getMisurazione()<65)

@@ -23,7 +23,7 @@ std::string Umidita::toString() const {
     return s;
 }
 
-int Umidita::Qualita(Dato d) const {
+int Umidita::qualita(Dato d) const {
     double misura=d.getMisurazione();
 
     if(misura>15){

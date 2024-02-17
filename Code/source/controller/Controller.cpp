@@ -173,5 +173,5 @@ QString Controller::getDescrizioneSensore(QString tipo) {
 }
 
 int Controller::qualita(QString tipoMisura) {
-    return model.Qualita(tipoMisura.toStdString());
+    return model.qualita(tipoMisura.toStdString());
 }

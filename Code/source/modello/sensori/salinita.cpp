@@ -29,7 +29,7 @@ std::string Salinita::toString() const {
     return s;
 }
 
-int Salinita::Qualita(Dato d) const {
+int Salinita::qualita(Dato d) const {
     double misura=d.getMisurazione();
     if(misura>4)
         misura=1.50*misura/100; // per fare rientrare i range nel caso si usi dati randomici o errori del sensore

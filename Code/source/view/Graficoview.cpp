@@ -49,9 +49,9 @@ GraficoView::GraficoView(Controller *controller, const QString tipoMisura, QWidg
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_chartView);
     setLayout(layout);
-    QLabel *lblQualita = new QLabel("Qualità:");
-    QLabel *txtQualita = new QLabel("Nullo");
-    layout->addWidget(lblQualita);
+    QLabel *lblqualita = new QLabel("Qualità:");
+    QLabel *txtqualita = new QLabel("Nullo");
+    layout->addWidget(lblqualita);
 
     int qualita = m_controller->qualita(tipoMisura);
     QColor colore;
@@ -78,8 +78,8 @@ GraficoView::GraficoView(Controller *controller, const QString tipoMisura, QWidg
     lblColore->setAutoFillBackground(true);
     lblColore->setStyleSheet(QString("background-color: %1").arg(colore.name()));
     layout->addWidget(lblColore);
-    txtQualita->setText(testo);
-    layout->addWidget(txtQualita);
+    txtqualita->setText(testo);
+    layout->addWidget(txtqualita);
 }
 
 GraficoView::~GraficoView() {

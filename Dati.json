@@ -1,7 +1,7 @@
 {
   "Luminosita": [
     {
-      "Descrizione": "",
+      "Descrizione": "dati luminosità",
       "Stato": 75
     },
     {
@@ -31,7 +31,7 @@
   ],
   "PHSuolo": [
     {
-      "Descrizione": "",
+      "Descrizione": "dati ph del suolo",
       "Stato": "Turba"
     },
     {
@@ -61,7 +61,7 @@
   ],
   "Salinita": [
     {
-      "Descrizione": "",
+      "Descrizione": "dati salinità",
       "Stato": 7
     },
     {
@@ -109,7 +109,7 @@
   ],
   "Temperatura": [
     {
-      "Descrizione": "",
+      "Descrizione": "dati temperatura",
       "Stato": false
     },
     {
@@ -157,7 +157,7 @@
   ],
   "Umidita": [
     {
-      "Descrizione": "",
+      "Descrizione": "dati umidità",
       "Stato": true
     },
     {

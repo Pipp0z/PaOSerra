@@ -25,7 +25,7 @@ public:
     bool setDescrizioneSensore(std::string unitaMis, std::string desc);
     std::string getDescrizioneSensore(std::string unitaMis);
     // ritorna se l'ultimo valore registrato del sensore è buono(1), se è alto(2) e se è basso(0)
-    int Qualita(std::string unitaMis)const;
+    int qualita(std::string unitaMis)const;
     bool inserisciSensori(Sensore *s);
     void rimuoviSensore(const std::string s);
     Sensore* cercaSensore( std::string s);

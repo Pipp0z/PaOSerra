@@ -123,10 +123,10 @@ Serra::~Serra() {
     }
 }
 
-int Serra::Qualita(std::string unitaMis) const {
+int Serra::qualita(std::string unitaMis) const {
     for ( Sensore* sensore : sensori) {
         if (sensore->getType() == unitaMis) {
-            return sensore->Qualita(sensore->ultimoDato());
+            return sensore->qualita(sensore->ultimoDato());
         }
     }
     throw std::invalid_argument("Errore nella funzione");

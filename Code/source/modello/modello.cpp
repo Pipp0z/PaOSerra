@@ -355,8 +355,8 @@ std::string Modello::getDescrizioneSensore(std::string unitaMis) {
     return serra.getDescrizioneSensore(unitaMis);
 }
 
-int Modello::Qualita(std::string unitaMis) const {
-    return serra.Qualita(unitaMis);
+int Modello::qualita(std::string unitaMis) const {
+    return serra.qualita(unitaMis);
 }
 
 std::vector<Dato>Modello::visualizzaDati(std::string s) {

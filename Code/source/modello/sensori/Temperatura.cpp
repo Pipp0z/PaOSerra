@@ -51,7 +51,7 @@ std::string Temperatura::toString() const {
     return s;
 }
 
-int Temperatura::Qualita(Dato d) const {
+int Temperatura::qualita(Dato d) const {
     double misura=d.getMisurazione();
 
     if(misura>27){

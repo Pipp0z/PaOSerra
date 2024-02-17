@@ -13,7 +13,7 @@ public:
     bool static getStato();
     std::string toString() const override;
     std::string static viewDato(Dato d);
-    int Qualita(Dato d)const override;
+    int qualita(Dato d)const override;
     std::string getType() const override;
 };
 
